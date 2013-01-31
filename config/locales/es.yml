@@ -1,0 +1,57 @@
+#encoding: utf-8
+
+es:
+  date:   
+    formats: 
+      default: ""
+      long: ""
+      short: ""
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    day_names: [Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo]
+    abbr_day_names: [Lun, Mar, Mie, Jue, Vie, Sab, Dom]
+    order:
+      - :year
+      - :month
+      - :day
+  errors:
+    messages:
+      inclusion: "no está incluido en la lista"
+      exclusion: "está reservado"
+      invalid: "no es válido"
+      confirmation: "no es una confirmación"
+      accepted: "debe ser aceptado"
+      empty: "no puede estar vacío"
+      blank: "no puede estar en blanco"
+      too_long: "es demasiado largo (máximo %{count} caracteres)"
+      too_short: "es demasiado corto (mínimo %{count} caracteres)"
+      wrong_length: "no tiene la longitud correcta (debería tener %{count} caracteres)"
+      taken: "ya ha sido registrado"
+      not_a_number: "debe ser un número"
+  time:
+    pm: "PM"
+    am: "AM"
+    formats:
+      default: "%Y-%m-%d %I:%M:%S %p"
+  activerecord:
+    attributes:
+      usuario:
+        password_digest: "La contraseña"
+        password: "La contraseña"
+        nombre: "El nombre"
+        email: "El correo electrónico"
+        password_confirmation: "La confirmación de contraseña"
+    errors:
+      models:
+        usuario:
+          attributes:
+            password:
+              confirmation: "no coincide con la confirmación"
+            email:
+              taken: "ya ha sido registrado"
+      messages:
+        record_invalid: "El registro ya existe"
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"
