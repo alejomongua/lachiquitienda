@@ -1,39 +1,73 @@
-<h1>Editing usuario</h1>
-
+<h1>Actualizar mi información</h1>
 <div class="row">
-  <div class="span4">
-    <section>
-      <h1>Regístrate</h1>
-      <%= form_for(@usuario) do |f| %>
-      
-        <%= render 'shared/error_messages', object: f.object %>
-        
-        <div class="field">
+  <div class="span7">
+    <%= form_for(@usuario) do |f| %> 
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="row centrado">
+        <%= imagen_de @usuario %>
+        <a href="http://gravatar.com/emails">Cambiar avatar</a>
+      </div>
+      <div class="row">
+        <div class="span4 marca">
           <%= f.label :nombre, "Nombre" %>
+        </div>
+        <div class="span3">
           <%= f.text_field :nombre %>
-        </div>  
-        <div class="field">
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4 marca">
+          <%= f.label :nick, "¿Como te gustaría que te llamemos?" %>
+        </div>
+        <div class="span3">
+          <%= f.text_field :nick %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4 marca">
           <%= f.label :email, "Correo electrónico" %>
+        </div>
+        <div class="span3">
           <%= f.text_field :email %>
         </div>
-        <div class="field">
-          <%= f.label :password, "Contraseña" %>
-          <%= f.password_field :password %>
+      </div>
+      <div class="row centrado" id="activar-modificar-password" >
+        <a href="#">Modificar contraseña</a>
+      </div>
+      <div id="modificar-password">
+        <div class="row">
+          <div class="span4 marca">
+            <%= f.label :password, "Contraseña" %>
+          </div>
+          <div class="span3">
+            <%= f.password_field :password %>
+          </div>
         </div>
-        <div class="field">
-          <%= f.label :password_confirmation, "Confirma tu contraseña" %>
-          <%= f.password_field :password_confirmation %>
+        <div class="row">
+          <div class="span4 marca">
+            <%= f.label :password_confirmation, "Confirma tu contraseña" %>
+          </div>
+          <div class="span3">
+            <%= f.password_field :password_confirmation %>
+          </div>
         </div>
-        <div class="boton-formulario">
-          <%= f.submit "Registrarme", class: "btn btn-info boton-formulario" %>
+      </div>
+      <div class="row">
+        <div class="span4 marca">
+          <%= f.label :acerca_de_mi, "Cuentanos algo sobre tí" %>
         </div>
-      <% end %>
-    </section>
+        <div class="span3">
+          <%= f.text_area :acerca_de_mi, rows: 8 %>
+        </div>
+      </div>
+      <div class="centrado span7">
+        <%= f.submit "Actualizar perfil", class: "btn btn-info btn-large boton-formulario" %>
+      </div>
+    <% end %>
   </div>
-  <div class="span8">
-    Aqui va una imagen que invite a registrarse
+  <div class="span5">
+    Algo adicional
   </div>
 </div>
-<%= render 'form' %>
 
 <%= link_to 'Cancelar', @usuario %>

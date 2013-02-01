@@ -21,39 +21,46 @@ describe "Usuario" do
   subject { page }
 
   describe "sin identificar" do
-    it { should_not have_content('Cerrar sesión') }
+    it { should_not have_content('Salir') }
     it { should_not have_content('Mi perfil') }
-    it { should have_link("Registrese", href: registrate_path) }
-    it { should have_link("Identifícate", href: identificate_path) }
+    it { should have_link("Registrate") }
+    it { should have_link("Identifícate") }
   end
 
-  describe "crear una cuenta" do
+  describe "crear una cuenta", js: true do
     before do
       visit registrate_path
-      fill_in "usuario_nombre", with: "Alejandro Mongua"
-      fill_in "usuario_nick", with: "Alejo"
+      fill_in "usuario_nombre", with: "Alejo Mongua"
+      #fill_in "usuario_nick", with: "Alejo"
       fill_in "usuario_email", with: "alejom.tv@gmail.com"
-      fill_in "password", with: "foobar"
-      fill_in "password_confirmation", with: "foobar"
+      fill_in "usuario_password", with: "foobar"
+      fill_in "usuario_password_confirmation", with: "foobar"
       click_button "Registrarme"
     end
-    it { should have_content('Hola Alejo') }
-    it { should have_link('Cerrar sesión', href: salir_path) }
-    it { should have_link('Mi perfil') }
+    it { should have_content('Alejo') }
     it { should_not have_link("Registrate") }
     it { should_not have_link("Identifícate") }
     it { should_not have_link('Administrar')}
 
     describe "cuando ya está identificado" do
-      before { visit registrate_path }
-      it { should_not have_button("Registrarme") }
-      it { should have_selector("body.paginas_estaticas_inicio") } #redirige a root_path
+      describe "ver mis links" do
+        before { click_link "Alejo" }
+        it { should have_link('Salir', href: salir_path) }
+        it { should have_link('Mi perfil') }
+      end
+    
+      describe "intentar registrarme nuevamente" do
+        before { visit registrate_path }
+        it { should_not have_button("Registrarme") }
+        it { should have_selector("body.paginas_estaticas_inicio") } #redirige a root_path        
+      end
     end
 
     describe "visitar nuevamente el login" do
       before { visit identificate_path }
       it { should_not have_button("Ingresar") }
       it { should have_selector("body.paginas_estaticas_inicio") } #redirige a root_path
+      it { should have_content("Bienvenido") } #redirige a root_path
     end
 
     describe "informacion protegida" do
@@ -62,13 +69,15 @@ describe "Usuario" do
     end
 
     describe 'mi propio perfil' do
+      before { click_link "Alejo Mongua" }
       describe 'informacion protegida' do
         before { click_link "Mi perfil" }
-
-        it { should have_link('Editar') }
-        
+       
         describe 'editar' do
-          before { click_link "Editar" }
+          before do
+            click_link "Opciones"
+            click_link "Editar"
+          end
 
           it { should have_link('Cambiar avatar') }
           it { should have_link("Modificar contraseña") }

@@ -1,4 +1,5 @@
 $break-large: 979px;
+$break-middle: 767px;
 body{
   padding-top:80px;
   @media screen and (max-width: $break-large) {
@@ -16,8 +17,12 @@ ul.dropdown-menu form{
 }
 li.boton{
   text-align:center;
+  @media screen and (max-width: $break-large) {
+    text-align:left;
+    padding-top:5px;
+  }  
   .btn-small{
-    margin-top:0
+    margin-top:0;
   }
 }
 li.normal{
@@ -27,4 +32,19 @@ li.normal{
     padding: 0;
     white-space: normal;
   }
+}
+div.marca{
+  text-align:right;
+  @media screen and (max-width: $break-middle) {
+    text-align:left;
+  }
+}
+form input{
+  max-width:100%;
+}
+div#modificar-password{
+  display:none;
+}
+.centrado{
+  text-align:center
 }

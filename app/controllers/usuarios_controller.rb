@@ -6,7 +6,7 @@ class UsuariosController < ApplicationController
   before_filter :administrar_usuarios,         only: [:destroy, :index]
 
   def new
-    redirect_to root_path unless !identificado?
+    redirect_to root_path if identificado?
     @usuario = Usuario.new
   end
 

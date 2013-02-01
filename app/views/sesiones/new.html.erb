@@ -1,2 +1,38 @@
 <% provide(:titulo, "Identifícate") %>
-<h1>Identifícate</h1>
+<h1 style="text-align:center;padding-bottom:0.5em">Identifícate</h1>
+<div class="row">
+  <div class="span7">
+    <%= form_for :sesion, url: sesiones_path do |f| %>
+
+      <div class="row">
+        <div class="span4 marca">
+          Correo electrónico:
+        </div>
+        <div class="span3">
+        <%= f.text_field :email, placeholder: "Correo electrónico" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4 marca">
+          Password:
+        </div>
+        <div class="span3">
+        <%= f.password_field :password, placeholder: "Contraseña" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset2 span3">       
+          <%= f.check_box :recordar, {}, "si", "no" %> Recuerdame
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6" style="text-align:center;padding:20px">       
+          <%= f.submit "Ingresar", class: "btn btn-large btn-info center" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="span5">
+    Aqui va una imagen bonita
+  </div>
+</div>

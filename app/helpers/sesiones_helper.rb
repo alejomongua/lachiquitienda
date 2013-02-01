@@ -34,7 +34,7 @@ module SesionesHelper
   def usuario_identificado
     unless identificado?
       almacenar_ubicacion
-      redirect_to root_url, notice: "Por favor identifiquese."
+      redirect_to root_url, notice: "Por favor identificate"
     end
   end
 

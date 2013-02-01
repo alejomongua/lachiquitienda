@@ -2,9 +2,11 @@
 
 class SesionesController < ApplicationController
   def new
+    redirect_to root_path if identificado?
   end
 
   def create
+    redirect_to root_path if identificado?
     usuario = Usuario.find_by_email(params[:sesion][:email].downcase)
     if usuario && usuario.authenticate(params[:sesion][:password])
       identificar usuario, params[:sesion][:recordar]

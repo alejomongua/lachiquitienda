@@ -7,7 +7,6 @@ describe Usuario do
                                email: "usuario@ejemplo.com",
                                password: "foobar",
                                password_confirmation: "foobar") }
-
   subject { @usuario }
 
   it { should be_valid }
@@ -21,7 +20,6 @@ describe Usuario do
   it { should respond_to(:admin) }
   it { should respond_to(:admin?) }
 
-  its(:admin) { should == false }
   describe "nombre" do
     describe "en blanco" do
       before { @usuario.nombre = " " }
@@ -89,6 +87,8 @@ describe Usuario do
 
   describe "almacenado " do
     before { @usuario.save }
+
+    its(:admin) { should == false }
 
     describe "retorno del metodo de autenticacion" do
       let(:found_user) { Usuario.find_by_email(@usuario.email) }
