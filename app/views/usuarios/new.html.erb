@@ -1,3 +1,35 @@
-<h1>Regístrate</h1>
-
-<%= render 'form' %>
+<% provide(:titulo, "Registrate, es muy facil!") %>
+<div class="row">
+  <div class="span7">
+    Aqui va una imagen que invite a registrarse
+  </div>
+  <div class="span5">
+    <section>
+      <h1>Regístrate</h1>
+      <%= form_for(@usuario) do |f| %>
+      
+        <%= render 'shared/error_messages', object: f.object %>
+        
+        <div class="field">
+          <%= f.label :nombre, "Nombre" %>
+          <%= f.text_field :nombre %>
+        </div>  
+        <div class="field">
+          <%= f.label :email, "Correo electrónico" %>
+          <%= f.text_field :email %>
+        </div>
+        <div class="field">
+          <%= f.label :password, "Contraseña" %>
+          <%= f.password_field :password %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation, "Confirma tu contraseña" %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+        <div class="boton-formulario">
+          <%= f.submit "Registrarme", class: "btn btn-info boton-formulario" %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>

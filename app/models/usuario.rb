@@ -3,13 +3,15 @@ class Usuario < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # Accesibilidad
-  attr_accessible :email, :nombre, :password, :password_confirmation, :admin, :nick
+  attr_accessible :email, :nombre, :password, :password_confirmation,
+                  :admin, :nick, :acerca_de_mi
                   
   has_secure_password
 
   # Filtros
   before_save do |user|
     self.email.downcase!
+    user.admin = false if admin.nil?
     user.nombre = nombre.split(' ').each{|word| word.capitalize!}.join(' ')
     create_remember_token
   end

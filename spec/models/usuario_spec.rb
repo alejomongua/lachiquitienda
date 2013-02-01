@@ -110,7 +110,7 @@ describe Usuario do
     end
 
     describe "capitalizacion" do
-      its(:nombre) { should  == "Example User"}
+      its(:nombre) { should  == "Usuario Ejemplo"}
     end      
   end
 end

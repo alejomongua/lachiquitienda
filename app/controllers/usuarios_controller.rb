@@ -3,7 +3,7 @@
 class UsuariosController < ApplicationController
   before_filter :usuario_identificado,  except: [:new, :create]
   before_filter :usuario_correcto,      only: [:show, :edit, :update]
-  before_filter :admin_usuario,         only: [:destroy, :index]
+  before_filter :administrar_usuarios,         only: [:destroy, :index]
 
   def new
     redirect_to root_path unless !identificado?
@@ -36,9 +36,11 @@ class UsuariosController < ApplicationController
   end
 
   def create
+    redirect_to root_path unless !identificado?
     @usuario = Usuario.new(params[:usuario])
     if @usuario.save
       flash[:success] = "#{@usuario.nombre} creado exitosamente"
+      identificar @usuario
       redirect_to usuarios_path
     else
       flash.now[:error] = "No se pudo crear el usuario"
@@ -55,7 +57,7 @@ class UsuariosController < ApplicationController
 private
 
   def usuario_correcto
-    @usuario = usuario.find(params[:id])
+    @usuario = Usuario.find(params[:id])
     redirect_to(root_path) unless (usuario_actual?(@usuario) || usuario_actual.admin?)
   end
 
