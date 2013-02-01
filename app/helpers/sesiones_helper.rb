@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 module SesionesHelper
-    def identificar(usuario, recordar=false)
+  def identificar(usuario, recordar=false)
     if recordar == "si"
       cookies.permanent[:remember_token] = usuario.remember_token
     else

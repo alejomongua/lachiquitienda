@@ -1,0 +1,30 @@
+$break-large: 979px;
+body{
+  padding-top:80px;
+  @media screen and (max-width: $break-large) {
+    padding-top:0px;
+  }
+}
+footer{
+  font-size:0.9em;
+  text-align:right;
+  font-style:italic;
+}
+ul.dropdown-menu form{
+  padding: 10px;
+  margin:0;
+}
+li.boton{
+  text-align:center;
+  .btn-small{
+    margin-top:0
+  }
+}
+li.normal{
+  font-size:0.9em;
+  a{
+    display: inline;
+    padding: 0;
+    white-space: normal;
+  }
+}

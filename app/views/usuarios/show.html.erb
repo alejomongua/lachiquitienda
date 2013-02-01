@@ -1,35 +1,55 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Nombre:</b>
-  <%= @usuario.nombre %>
-</p>
-
-<p>
-  <b>Nick:</b>
-  <%= @usuario.nick %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @usuario.email %>
-</p>
-
-<p>
-  <b>Password digest:</b>
-  <%= @usuario.password_digest %>
-</p>
-
-<p>
-  <b>Acerca de mi:</b>
-  <%= @usuario.acerca_de_mi %>
-</p>
-
-<p>
-  <b>Remember token:</b>
-  <%= @usuario.remember_token %>
-</p>
-
-
-<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
-<%= link_to 'Back', usuarios_path %>
+<% nombre = usuario_actual.nick.nil? ? usuario_actual.nombre : usuario_actual.nick %>
+<% provide(:titulo, nombre) %>
+<div class="row">
+  <h1>
+    <%= imagen_de @usuario %>
+    <%= nombre %>
+  </h1>
+</div>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#datos" data-toggle="tab">Datos</a></li>
+    <li><a href="#actividad" data-toggle="tab">Actividad reciente</a></li>
+    <li><a href="#opciones" data-toggle="tab">Opciones</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="datos">
+      <section>
+        <h3>Datos</h3>
+        <% if nombre != @usuario.nombre %>
+          <div class="nombre datos-personales">
+            <%= @usuario.nombre %>
+          </div>
+        <% end %>
+        <% if usuario_actual.admin %>
+          <div class="email datos-personales">
+            <span class="dato">Correo electrónico: </span>
+            <%= link_to @usuario.email, "mailto:#{@usuario.email}" %>
+          </div>
+        <% end %>
+          <div class="acerca-de-mi datos-personales">
+            <% unless @usuario.acerca_de_mi.nil? %>
+              <%= @usuario.acerca_de_mi %>
+            <% else %>
+              <%= link_to "Cuentanos algo sobre tí", edit_usuario_path(@usuario) %>
+            <% end %>
+          </div>
+      </section>
+    </div>
+    <div class="tab-pane" id="actividad">
+      <section>
+        <h3>
+          Actividad reciente
+        </h3>
+      </section>
+    </div>
+    <div class="tab-pane" id="opciones">
+      <section>
+        <h3>Opciones</h3>
+        <% if (usuario_actual? @usuario) %>
+          <%= link_to "Editar mi perfil", edit_usuario_path(@usuario) %>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>
