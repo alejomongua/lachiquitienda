@@ -22,6 +22,14 @@ class Usuario < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, on: :create
 
+  def self.busqueda(s)
+    if s
+      where('lower(nombre) LIKE ?', "%#{s.downcase}%")
+    else
+      where('nombre LIKE ?', "%#{}%")
+    end
+  end
+
 private
 
   def create_remember_token

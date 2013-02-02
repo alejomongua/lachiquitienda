@@ -21,8 +21,7 @@
           <% if identificado? %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <% nombre = usuario_actual.nick.nil? ? usuario_actual.nombre : usuario_actual.nick %>
-              <%= nombre %>
+              <%= nombre = usuario_actual.nick.blank? ? usuario_actual.nombre : usuario_actual.nick %>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" id="swatch-menu">
@@ -32,6 +31,11 @@
               <li>
                 <%= link_to "Salir", salir_path, method: :delete %>
               </li>
+              <% if usuario_actual.admin %>
+                <li>
+                  <%= link_to "Administrar", usuarios_path %>
+              </li>
+              <% end %>
             </ul>
           </li>
           <% else %>
@@ -59,7 +63,7 @@
           </li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Registrate
+              Regístrate
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" id="swatch-menu">

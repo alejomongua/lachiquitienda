@@ -1,32 +1,57 @@
 <%= form_for(@usuario) do |f| %>
   
   <%= render 'shared/error_messages', object: f.object %>
-  
-  <div class="field">
-    <%= f.label :nombre, "Nombre" %>
-    <%= f.text_field :nombre %>
+
+  <div class="row">
+    <div class="span4 marca">
+      <%= f.label :nombre, "Nombre" %>
+    </div>
+    <div class="span3">
+      <%= f.text_field :nombre %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :nick, "¿Como quieres que te llamemos? (Opcional)"%>
-    <%= f.text_field :nick %>
+  <div class="row">
+    <div class="span4 marca">
+      <%= f.label :nick, "¿Como te gustaría que te llamemos?" %>
+    </div>
+    <div class="span3">
+      <%= f.text_field :nick %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email, "Correo electrónico" %>
-    <%= f.text_field :email %>
+  <div class="row">
+    <div class="span4 marca">
+      <%= f.label :email, "Correo electrónico" %>
+    </div>
+    <div class="span3">
+      <%= f.text_field :email %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password, "Contraseña" %>
-    <%= f.password_field :password %>
+  <div class="row">
+    <div class="span4 marca">
+      <%= f.label :password, "Contraseña" %>
+    </div>
+    <div class="span3">
+      <%= f.password_field :password %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirma tu contraseña" %>
-    <%= f.password_field :password_confirmation %>
+  <div class="row">
+    <div class="span4 marca">
+      <%= f.label :password_confirmation, "Confirma tu contraseña" %>
+    </div>
+    <div class="span3">
+      <%= f.password_field :password_confirmation %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :acerca_de_mi, "Cuéntanos algo sobre ti (opcional)" %>
-    <%= f.text_area :acerca_de_mi, rows: 8 %>
+  <div class="row">
+    <div class="span4 marca">
+      <%= f.label :acerca_de_mi, "Cuentanos algo sobre tí" %>
+    </div>
+    <div class="span3">
+      <%= f.text_area :acerca_de_mi, rows: 8 %>
+    </div>
   </div>
-  <div class="boton-formulario">
-    <%= f.submit "Registrarme", class: "btn btn-info boton-formulario" %>
+  <div class="centrado span7">
+    <%= f.submit "Regístrate", class: "btn btn-info btn-large boton-formulario" %>
   </div>
+
 <% end %>

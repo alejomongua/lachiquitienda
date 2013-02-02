@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe "Usuario" do
   before do
-    @usuario_sin_permisos = Usuario.new(nombre: "usuario ejemplo",
+    @usuario_sin_permisos = Usuario.new(nombre: "pepito perez",
                         email: "usuario@example.com",
                         password: "foobar",
                         password_confirmation: "foobar")
@@ -23,22 +23,29 @@ describe "Usuario" do
   describe "sin identificar" do
     it { should_not have_content('Salir') }
     it { should_not have_content('Mi perfil') }
-    it { should have_link("Registrate") }
+    it { should have_link("Regístrate") }
     it { should have_link("Identifícate") }
+    describe 'desplegar el menu de inicio de sesion', js: true do
+      before { click_link "Identifícate" }
+      it { should have_button("Ingresar") }
+    end
+    describe 'desplegar el menu de registro' do
+      before { click_link "Regístrate" }
+      it { should have_button("Regístrate") }
+    end
   end
 
   describe "crear una cuenta", js: true do
     before do
       visit registrate_path
       fill_in "usuario_nombre", with: "Alejo Mongua"
-      #fill_in "usuario_nick", with: "Alejo"
       fill_in "usuario_email", with: "alejom.tv@gmail.com"
       fill_in "usuario_password", with: "foobar"
       fill_in "usuario_password_confirmation", with: "foobar"
-      click_button "Registrarme"
+      click_button "Regístrate"
     end
     it { should have_content('Alejo') }
-    it { should_not have_link("Registrate") }
+    it { should_not have_link("Regístrate") }
     it { should_not have_link("Identifícate") }
     it { should_not have_link('Administrar')}
 
@@ -51,7 +58,7 @@ describe "Usuario" do
     
       describe "intentar registrarme nuevamente" do
         before { visit registrate_path }
-        it { should_not have_button("Registrarme") }
+        it { should_not have_button("Regístrate") }
         it { should have_selector("body.paginas_estaticas_inicio") } #redirige a root_path        
       end
     end
@@ -70,9 +77,11 @@ describe "Usuario" do
 
     describe 'mi propio perfil' do
       before { click_link "Alejo Mongua" }
+      it { should have_link("Mi perfil") }
+
       describe 'informacion protegida' do
         before { click_link "Mi perfil" }
-       
+        it { should have_link("Opciones") } 
         describe 'editar' do
           before do
             click_link "Opciones"
@@ -81,19 +90,43 @@ describe "Usuario" do
 
           it { should have_link('Cambiar avatar') }
           it { should have_link("Modificar contraseña") }
+          describe 'modificar contraseña' do
+            before { click_link "Modificar contraseña" }
+            it { should have_selector("input[type='password']") }
+          end
+          describe 'modificar mi perfil' do
+            before do
+              fill_in "usuario_nick", with: "Alejin"
+              click_button "Actualizar"
+            end
+            it { should have_content("Alejin") }
+          end
         end
       end
     end
   end
 
-  describe "con permisos" do
+  describe "con permisos", js: true do
     before do
-      visit root_path
+      visit identificate_path
       fill_in "sesion_email", with: @usuario_con_permisos.email
       fill_in "sesion_password", with: @usuario_con_permisos.password
       click_button "Ingresar"
+      click_link @usuario_con_permisos.nombre
     end
-    
-    it { should_not have_link('Administrar')}
+    it { should have_link("Administrar") }
+    describe 'lista de usuarios' do
+      before { click_link "Administrar" }
+      it { should have_content "Lista de usuarios" }
+      it { should have_button "Buscar" }
+      it { should have_content "Pepito" }
+      describe 'buscar' do
+        before do
+          fill_in "buscar", with: "ejemplo"
+          click_button "Buscar"
+        end
+        it { should_not have_content "Pepito" }
+      end
+    end
   end
 end

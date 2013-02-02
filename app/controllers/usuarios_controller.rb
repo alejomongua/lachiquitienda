@@ -32,7 +32,7 @@ class UsuariosController < ApplicationController
   end
 
   def index
-    @usuarios = Usuario.paginate(page: params[:page])
+    @usuarios = Usuario.busqueda(params[:buscar]).paginate(page: params[:page])
   end
 
   def create

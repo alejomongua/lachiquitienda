@@ -1,4 +1,4 @@
-<% nombre = usuario_actual.nick.nil? ? usuario_actual.nombre : usuario_actual.nick %>
+<% nombre = usuario_actual.nick.blank? ? usuario_actual.nombre : usuario_actual.nick %>
 <% provide(:titulo, nombre) %>
 <div class="row">
   <h1>

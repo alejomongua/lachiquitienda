@@ -1,33 +1,22 @@
-<h1>Listing usuarios</h1>
+<% provide(:titulo, "Lista de usuarios") %>
+<h1>Lista de usuarios</h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Nick</th>
-    <th>Email</th>
-    <th>Password digest</th>
-    <th>Acerca de mi</th>
-    <th>Remember token</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @usuarios.each do |usuario| %>
-  <tr>
-    <td><%= usuario.nombre %></td>
-    <td><%= usuario.nick %></td>
-    <td><%= usuario.email %></td>
-    <td><%= usuario.password_digest %></td>
-    <td><%= usuario.acerca_de_mi %></td>
-    <td><%= usuario.remember_token %></td>
-    <td><%= link_to 'Show', usuario %></td>
-    <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
-    <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= form_tag usuarios_path, method: :get do %>
+  <div>
+    <%= text_field_tag :buscar, params[:buscar], style: "margin-bottom:0", class: "search-query" %>
+    <%= submit_tag "Buscar", :name => nil, class: "btn btn-small" %>
+  </div>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Usuario', new_usuario_path %>
+<%= will_paginate %>
+<ul class="lista usuarios">
+  <% @usuarios.each do |usuario| %>
+    <li>
+      <%= link_to usuario.nombre, usuario %>
+      <% if usuario_actual.admin %>
+        | <%= link_to "Eliminar", usuario, method: :delete %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate %>
