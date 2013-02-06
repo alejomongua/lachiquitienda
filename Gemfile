@@ -9,7 +9,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 #gem 'unicorn'
 gem 'sqlite3', '1.3.6'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

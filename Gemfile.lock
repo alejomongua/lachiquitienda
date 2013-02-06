@@ -62,7 +62,7 @@ GEM
     factory_girl_rails (4.1.0)
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
-    faraday (0.8.4)
+    faraday (0.8.5)
       multipart-post (~> 1.1)
     faye-websocket (0.4.6)
       eventmachine (>= 0.12.0)
@@ -101,9 +101,9 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
-    omniauth-facebook (1.4.1)
-      omniauth-oauth2 (~> 1.1.0)
-    omniauth-oauth2 (1.1.1)
+    omniauth-facebook (1.4.0)
+      omniauth-oauth2 (~> 1.0.2)
+    omniauth-oauth2 (1.0.3)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     poltergeist (1.0.2)
@@ -197,7 +197,7 @@ DEPENDENCIES
   jquery-rails (= 2.0.2)
   jquery-ui-rails
   launchy
-  omniauth-facebook
+  omniauth-facebook (= 1.4.0)
   poltergeist
   rails (= 3.2.11)
   rspec-rails (= 2.11.0)

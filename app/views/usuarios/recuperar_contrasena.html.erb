@@ -1,0 +1,24 @@
+<% provide(:titulo, :"Olvidé mi contraseña") %>
+<h1>Olvidé mi contraseña</h1>
+<div class="row">
+  <div class="span7">
+    <%= form_tag olvide_contrasena_path do |f| %> 
+
+      <div class="row">
+        <div class="span4 marca">
+          <%= label_tag :email, :"Correo electrónico" %>
+        </div>
+        <div class="span3">
+          <%= text_field_tag :email, params[:email] %>
+        </div>
+      </div>
+      
+      <div class="centrado span7">
+        <%= submit_tag "Recordar contraseña", name: nil, class: "btn btn-info btn-large boton-formulario" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="span5">
+    
+  </div>
+</div>

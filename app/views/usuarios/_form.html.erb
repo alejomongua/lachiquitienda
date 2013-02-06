@@ -20,6 +20,19 @@
   </div>
   <div class="row">
     <div class="span4 marca">
+      <%= f.label :genero, "Género:" %>
+    </div>
+    <div class="span3">
+      <div>
+        <%= f.radio_button :genero, "Hombre" %> Hombre
+      </div>
+      <div>
+        <%= f.radio_button :genero, "Mujer" %> Mujer
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4 marca">
       <%= f.label :email, "Correo electrónico" %>
     </div>
     <div class="span3">

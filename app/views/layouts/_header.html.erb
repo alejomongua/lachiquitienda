@@ -21,7 +21,7 @@
           <% if identificado? %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <%= nombre = usuario_actual.nick.blank? ? usuario_actual.nombre : usuario_actual.nick %>
+              <%= usuario_actual.nick %>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" id="swatch-menu">
@@ -29,7 +29,7 @@
                 <%= link_to "Mi perfil", usuario_actual %>
               </li>
               <li>
-                <%= link_to "Salir", salir_path, method: :delete %>
+                <%= link_to "Salir", salir_path, method: :delete, id: "cerrar-sesion" %>
               </li>
               <% if usuario_actual.admin %>
                 <li>
@@ -45,6 +45,11 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" id="swatch-menu">
+              <li class="centrado">
+                <a href="/auth/facebook" title="Conectar con facebook" class="conectar-con-facebook"><img src="/images/logo-fb-200.png" alt="Conectar con facebook" /></a>
+              </li>
+              <li class="divider"></li>
+              <li class="centrado">o puedes hacerlo con tu correo y contraseña:</li>
               <%= form_for :sesion, url: sesiones_path do |f| %>
                 <li>
                   <%= f.text_field :email, placeholder: "Correo electrónico" %>
@@ -58,6 +63,9 @@
                 <li class="boton">
                   <%= f.submit "Ingresar", class: "btn btn-small btn-info center" %>
                 </li>
+                <li>
+                  <%= link_to "¡Olvidé mi contraseña!", olvide_contrasena_path %>
+                </li>
               <% end %>
             </ul>
           </li>
@@ -67,6 +75,11 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" id="swatch-menu">
+              <li class="centrado">
+                <a href="/auth/facebook" title="Conectar con facebook" class="conectar-con-facebook"><img src="/images/logo-fb-200.png" alt="Conectar con facebook" /></a>
+              </li>
+              <li class="divider"></li>
+              <li class="centrado">o llena los siguientes datos:</li>
               <%= form_for :usuario, url: usuarios_path do |f| %>
                 <li>
                   <%= f.text_field :nombre, placeholder: "Nombre" %>

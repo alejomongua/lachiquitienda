@@ -22,4 +22,22 @@ class SesionesController < ApplicationController
     redirect_to root_url
   end
 
+  def oauth
+    usuario = Oauth.where(env["omniauth.auth"].slice(:provider, :uid)).first_or_initialize do |oauth|
+      oauth.token = env["omniauth.auth"].credentials.token
+      oauth.expira = Time.at(env["omniauth.auth"].credentials.expires_at)
+      if identificado?
+        oauth.usuario = usuario_actual
+      else
+        oauth.usuario = Usuario.where( email: env["omniauth.auth"].info.email ).first_or_create do |user|
+          user.nombre = env["omniauth.auth"].info.name
+          user.password = user.password_confirmation = SecureRandom.base64
+        end
+      end
+      oauth.save!
+    end.usuario
+    identificar usuario
+    flash[:success] = 'Tu cuenta ha sido vinculada a ' + env["omniauth.auth"].provider
+    redirect_back_or root_path
+  end
 end

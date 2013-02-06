@@ -1,9 +1,8 @@
-<% nombre = usuario_actual.nick.blank? ? usuario_actual.nombre : usuario_actual.nick %>
-<% provide(:titulo, nombre) %>
+<% provide(:titulo, usuario_actual.nick) %>
 <div class="row">
   <h1>
     <%= imagen_de @usuario %>
-    <%= nombre %>
+    <%= usuario_actual.nick %>
   </h1>
 </div>
 <div class="tabbable">
@@ -16,24 +15,25 @@
     <div class="tab-pane active" id="datos">
       <section>
         <h3>Datos</h3>
-        <% if nombre != @usuario.nombre %>
-          <div class="nombre datos-personales">
-            <%= @usuario.nombre %>
-          </div>
-        <% end %>
+        <div class="nombre datos-personales">
+          <%= @usuario.nombre %>
+        </div>
+        <div class="nombre datos-personales">
+          Miembro desde el <%= l @usuario.created_at, format: "%e de %B de %Y" %>
+        </div>
         <% if usuario_actual.admin %>
           <div class="email datos-personales">
             <span class="dato">Correo electrónico: </span>
             <%= link_to @usuario.email, "mailto:#{@usuario.email}" %>
           </div>
         <% end %>
-          <div class="acerca-de-mi datos-personales">
-            <% unless @usuario.acerca_de_mi.nil? %>
-              <%= @usuario.acerca_de_mi %>
-            <% else %>
-              <%= link_to "Cuentanos algo sobre tí", edit_usuario_path(@usuario) %>
-            <% end %>
-          </div>
+        <div class="acerca-de-mi datos-personales">
+          <% unless @usuario.acerca_de_mi.nil? %>
+            <%= @usuario.acerca_de_mi %>
+          <% else %>
+            <%= link_to "Cuentanos algo sobre tí", edit_usuario_path(@usuario) %>
+          <% end %>
+        </div>
       </section>
     </div>
     <div class="tab-pane" id="actividad">

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Bienvenid<%= @usuario.genero=="Mujer" ? "a" : "o" %> <%= @usuario.nombre.split(' ').first %></h1>
+    <p>
+      Tu registro ha sido exitoso
+    </p>
+    <p>
+      Para editar tu perfil y tus preferencias, ingresa a <%= link_to :"este vínculo", edit_usuario_url(@usuario) %>.
+    </p>
+    <p>Gracias nuevamente por unirte, que tengas un feliz dia!</p>
+  </body>
+</html>

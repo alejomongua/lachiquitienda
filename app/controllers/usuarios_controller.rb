@@ -1,12 +1,12 @@
 #encoding: utf-8
 
 class UsuariosController < ApplicationController
-  before_filter :usuario_identificado,  except: [:new, :create]
+  before_filter :usuario_identificado, except: [:new, :create, :olvide_contrasena, :generar_tokens]
+  before_filter :no_identificado, only: [:new, :create, :olvide_contrasena, :generar_tokens]
   before_filter :usuario_correcto,      only: [:show, :edit, :update]
   before_filter :administrar_usuarios,         only: [:destroy, :index]
 
   def new
-    redirect_to root_path if identificado?
     @usuario = Usuario.new
   end
 
@@ -21,6 +21,7 @@ class UsuariosController < ApplicationController
       params[:usuario].delete(:password)
       params[:usuario].delete(:password_confirmation)
     end
+    @usuario.token=""
     if @usuario.update_attributes(params[:usuario])
       identificar @usuario if usuario_actual?(@usuario)
       flash[:success] = "Perfil actualizado"
@@ -36,9 +37,9 @@ class UsuariosController < ApplicationController
   end
 
   def create
-    redirect_to root_path unless !identificado?
     @usuario = Usuario.new(params[:usuario])
     if @usuario.save
+      CorreoUsuarios.bienvenida(@usuario).deliver
       flash[:success] = "#{@usuario.nombre} creado exitosamente"
       identificar @usuario
       redirect_to usuarios_path
@@ -54,6 +55,31 @@ class UsuariosController < ApplicationController
     redirect_to usuarios_url
   end
 
+  def generar_tokens
+    usuario = Usuario.find_by_email(params[:email].downcase)
+    if usuario
+      usuario.generar_token
+      CorreoUsuarios.olvide_contrasena(usuario).deliver
+      redirect_to root_path, notice: "Se ha enviado un correo a #{params[:email]} con instrucciones para restablecer la contraseña"
+    else
+      redirect_to olvide_contrasena_path, notice: "No se encontró el usuario"
+    end
+  end
+
+  def olvide_contrasena
+    if params[:u]
+      @usuario = Usuario.find(params[:u])
+      if @usuario.token == params[:token] && @usuario.fecha_token.to_time > Time.now
+        identificar @usuario
+        render 'modificar_contrasena'
+      else
+        redirect_to root_path 
+      end
+    else
+      render 'recuperar_contrasena'
+    end
+  end
+
 private
 
   def usuario_correcto
@@ -63,5 +89,9 @@ private
 
   def administrar_usuarios
     redirect_to(root_path) unless usuario_actual.admin?
+  end
+
+  def no_identificado
+    redirect_to root_path unless !identificado?
   end
 end

@@ -13,6 +13,9 @@ describe Usuario do
 
   it { should respond_to(:nombre) }
   it { should respond_to(:email) }
+  it { should respond_to(:genero) }
+  it { should respond_to(:nick) }
+  it { should respond_to(:acerca_de_mi) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }  
@@ -79,6 +82,24 @@ describe Usuario do
     end
   end
 
+  describe 'genero' do
+    it "incorrecto" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                     foo@bar_baz.com foo@bar+baz.com]
+      addresses.each do |invalid_address|
+        @usuario.email = invalid_address
+        @usuario.should_not be_valid
+      end      
+    end
+    it "correcto" do
+      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn alejom_tv@hotmail.com]
+      addresses.each do |valid_address|
+        @usuario.nombre = valid_address
+        @usuario.should be_valid
+      end      
+    end    
+  end
+
   describe "administrador" do
     before { @usuario.admin = true }
     it { should be_valid }
@@ -111,6 +132,10 @@ describe Usuario do
 
     describe "capitalizacion" do
       its(:nombre) { should  == "Usuario Ejemplo"}
-    end      
+    end
+
+    describe 'nick' do
+      its(:nick) { should == 'Usuario' }
+    end
   end
 end

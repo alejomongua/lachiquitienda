@@ -26,6 +26,11 @@
         </div>
       </div>
       <div class="row">
+        <div class="offset2 span3">       
+          <%= link_to "¡Olvidé mi contraseña!",olvide_contrasena_path %>
+        </div>
+      </div>
+      <div class="row">
         <div class="span6" style="text-align:center;padding:20px">       
           <%= f.submit "Ingresar", class: "btn btn-large btn-info center" %>
         </div>
@@ -33,6 +38,6 @@
     <% end %>
   </div>
   <div class="span5">
-    Aqui va una imagen bonita
+    <a href="/auth/facebook" title="Conectar con facebook" class="conectar-con-facebook"><img src="/images/logo-fb-220.png" alt="Conectar con facebook" /></a>
   </div>
 </div>

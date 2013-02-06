@@ -4,7 +4,7 @@ class Usuario < ActiveRecord::Base
 
   # Accesibilidad
   attr_accessible :email, :nombre, :password, :password_confirmation,
-                  :admin, :nick, :acerca_de_mi
+                  :admin, :nick, :acerca_de_mi, :genero
                   
   has_secure_password
 
@@ -14,6 +14,7 @@ class Usuario < ActiveRecord::Base
     user.admin = false if admin.nil?
     user.nombre = nombre.split(' ').each{|word| word.capitalize!}.join(' ')
     create_remember_token
+    self.nick = nombre.split(' ').first if nick.blank?
   end
 
   # Validaciones
@@ -21,6 +22,8 @@ class Usuario < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, on: :create
+
+  has_many :oauths
 
   def self.busqueda(s)
     if s
@@ -30,8 +33,31 @@ class Usuario < ActiveRecord::Base
     end
   end
 
-private
+  def generar_token
+    self.token = SecureRandom.urlsafe_base64
+    self.fecha_token = Time.now + 1.day
+    self.save
+  end
 
+  def genero= (gen)
+    if gen == "Hombre"
+      self.gender = 'h'
+    elsif gen =="Mujer"
+      self.gender = 'm'
+    end
+  end
+
+  def genero
+    if self.gender == "h"
+      "Hombre"
+    elsif self.gender =="m"
+      "Mujer"
+    else
+      nil
+    end
+  end
+
+private
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64
   end
