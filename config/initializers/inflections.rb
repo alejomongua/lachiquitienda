@@ -10,4 +10,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.singular /([^djlnrs])s([A-Z]|_|$)/, '\1\2'
   inflect.singular /([djlnrs])es([A-Z]|_|$)/, '\1\2'
   inflect.singular /(.*)ces([A-Z]|_|$)$/i, '\1z\2'
+
+  inflect.irregular 'busqueda_posts', 'busquedas_posts'
 end

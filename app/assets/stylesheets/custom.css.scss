@@ -51,3 +51,28 @@ div#modificar-password{
 ul.lista{
   list-style-type:none;
 }
+div.detalle-post{
+  .info{
+  font-size:0.9em;
+  font-style:italic;
+  }
+  .contenido{
+    padding:1em 0.5em;
+  }
+}
+.no-publicado{
+  font-style:italic;
+  color:red;
+}
+form {
+  input[type="text"].ancho, textarea.ancho {
+    width: 90%;
+  }
+  span.etiqueta{
+    height:20px;
+    padding-right:2em;
+  }
+}
+.etiquetas span a{
+  color:white;
+}

@@ -1,0 +1,23 @@
+<%= form_for(@post, html: { class: "formulario-posts" }) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo, class: "ancho" %>
+  </div>
+  <div class="field">
+    <%= f.label :contenido %>
+    <%= f.text_area :contenido, class: "ancho" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :publicado %> Publicado
+  </div>
+  <div class="field">
+    <span class="etiqueta">Etiquetas</span>
+    <%= f.text_field :tag_list, size: 50 %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Guardar post", class: "btn btn-info btn-large boton-formulario" %>
+  </div>
+<% end %>

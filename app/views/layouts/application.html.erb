@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="<%= content_for?(:descripcion) ? yield(:descripcion) : "Descripción por defecto de la aplicación" %>">
+    <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : "palabras clave por defecto de la aplicación" %>">
     <meta name="viewport" content="width=device-width">
     <title><%= titulo_completo(yield(:titulo)) %></title>
     <%= stylesheet_link_tag    "application", :media => "all" %>

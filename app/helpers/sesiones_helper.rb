@@ -46,4 +46,8 @@ module SesionesHelper
   def almacenar_ubicacion
     session[:return_to] = request.url
   end
+
+  def usuario_actual_admin?
+    identificado? && usuario_actual.admin?
+  end
 end

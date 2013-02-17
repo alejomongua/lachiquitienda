@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205020918) do
+ActiveRecord::Schema.define(:version => 20130209012812) do
+
+  create_table "busquedas_posts", :force => true do |t|
+    t.string   "palabras_clave"
+    t.date     "min_fecha"
+    t.date     "max_feca"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "oauths", :force => true do |t|
     t.string   "uid"
@@ -21,6 +29,35 @@ ActiveRecord::Schema.define(:version => 20130205020918) do
     t.datetime "expira"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "titulo"
+    t.text     "contenido"
+    t.integer  "autor_id"
+    t.boolean  "publicado"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["created_at"], :name => "index_posts_on_created_at"
+  add_index "posts", ["publicado"], :name => "index_posts_on_publicado"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "usuarios", :force => true do |t|

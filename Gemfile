@@ -10,10 +10,17 @@ gem 'jquery-rails', '2.0.2'
 #gem 'unicorn'
 gem 'sqlite3', '1.3.6'
 gem 'omniauth-facebook', '1.4.0'
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'spork', '0.9.2'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 # Gems used only for assets and not required

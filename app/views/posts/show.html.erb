@@ -1,0 +1,29 @@
+<% provide(:titulo, @post.titulo) %>
+<h1><%= @post.titulo %></h1>
+<div class="detalle-post">
+  <% unless @post.publicado %>
+    <div class="alert">No ha sido publicado</div>
+  <% end %>
+  <div class="info">Publicado el <%= l @post.created_at, format: "%d de %B de %Y a las %I:%M %P" %> por <%= @post.autor.nombre %></div>
+  <div class="contenido">
+    <%= raw @post.contenido %>
+  </div>
+  <% if @post.tag_list.count > 0 %>
+    <div class="etiquetas">
+      Etiquetado en: 
+      <% @post.tags.each do |t| %>
+        <span class="badge badge-inverse tag"><%= link_to t.to_s,posts_path(etiquetas: t.to_s) %></span>
+      <% end %>
+    </div>
+  <% end %>
+  <% if identificado? && usuario_actual.admin %>
+    <div class="acciones">
+      <%= link_to "Editar", edit_post_path(@post) %>
+      | <%= link_to "Eliminar", post_path(@post), method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
+    </div>
+  <% end %>
+</div>
+<% content_for :descripcion do %><%= strip_tags @post.contenido.split('<!-- leer_mas -->').first %><% end %>
+<% unless @post.tag_list.blank? %>
+  <% content_for :keywords do %><%= @post.tag_list %><% end %>
+<% end %>

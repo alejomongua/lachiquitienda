@@ -1,4 +1,9 @@
 Login::Application.routes.draw do
+  get "etiquetas/index"
+
+  resources :busquedas_posts
+  resources :posts
+
   match 'auth/:provider/callback', to: 'sesiones#oauth'
   match 'auth/failure', to: redirect('/')
 
