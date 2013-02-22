@@ -1,4 +1,10 @@
 Login::Application.routes.draw do
+  resources :productos
+
+
+  resources :categorias
+
+
   get "etiquetas/index"
 
   resources :busquedas_posts

@@ -11,14 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209012812) do
+ActiveRecord::Schema.define(:version => 20130222213023) do
 
-  create_table "busquedas_posts", :force => true do |t|
-    t.string   "palabras_clave"
-    t.date     "min_fecha"
-    t.date     "max_feca"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+  create_table "campos_productos", :force => true do |t|
+    t.string   "nombre"
+    t.string   "tipo_campo"
+    t.boolean  "requerido"
+    t.integer  "categoria_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "campos_productos", ["categoria_id"], :name => "index_campos_productos_on_categoria_id"
+
+  create_table "categorias", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "oauths", :force => true do |t|
@@ -42,6 +51,20 @@ ActiveRecord::Schema.define(:version => 20130209012812) do
 
   add_index "posts", ["created_at"], :name => "index_posts_on_created_at"
   add_index "posts", ["publicado"], :name => "index_posts_on_publicado"
+
+  create_table "productos", :force => true do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.integer  "categoria_id"
+    t.integer  "precio"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "propiedades"
+    t.integer  "cantidad"
+    t.boolean  "publicado"
+  end
+
+  add_index "productos", ["categoria_id"], :name => "index_productos_on_categoria_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

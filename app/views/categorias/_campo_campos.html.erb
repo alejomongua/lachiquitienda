@@ -1,0 +1,7 @@
+<fieldset>
+  <%= f.select :tipo_campo, %w[texto numero decimal check_box] %>
+  <%= f.text_field :nombre, placeholder: "nombre del campo" %>
+  <%= f.check_box :requerido %> <%= f.label :requerido %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "borrar", '#', class: "remove_fields" %>
+</fieldset>
