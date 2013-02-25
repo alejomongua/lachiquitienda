@@ -29,3 +29,5 @@ bin/
 
 config/facebook.yml
 config/gmail.yml
+
+public/fotos/*

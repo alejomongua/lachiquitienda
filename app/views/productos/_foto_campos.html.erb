@@ -1,0 +1,30 @@
+<fieldset class="campo">
+  <div class="row">
+    <div class="span9">
+      <div class="row">
+        <div class="span3 marca">
+          <%= f.label :nombre, "Nombre/descripción de la imagen" %>
+        </div>
+        <div class="span5">
+          <%= f.text_field :nombre %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3 marca">
+          <%= f.label :imagen %>
+        </div>
+        <div class="span5">
+          <%= f.file_field :imagen %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3 marca">
+          <%= f.hidden_field :_destroy %>
+        </div>
+        <div class="span5">
+          <%= link_to "Borrar", '#', class: "remove_fields" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>

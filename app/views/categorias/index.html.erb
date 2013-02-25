@@ -1,23 +1,29 @@
-<h1>Listing categorias</h1>
+<% provide :titulo, :"Lista de categorías de productos" %>
+<div class="row">
+  <div class="span12">
+    <h1>Lista de categorías de productos</h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @categorias.each do |categoria| %>
-  <tr>
-    <td><%= categoria.nombre %></td>
-    <td><%= link_to 'Show', categoria %></td>
-    <td><%= link_to 'Edit', edit_categoria_path(categoria) %></td>
-    <td><%= link_to 'Destroy', categoria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Categoria', new_categoria_path %>
+    <% @categorias.each do |categoria| %>
+      <div class="row categoria-item">
+        <div class="span3 nombre-categoria">
+          <span class="nombre-categoria"><%= categoria.nombre %></span>
+          <br>
+          <%= link_to "Editar", edit_categoria_path(categoria) %>
+           | 
+          <%= link_to "Eliminar", categoria, method: :delete %>
+        </div>
+        <div class="span8 campos-categoria">
+          <% categoria.campos.each do |campo| %>
+            <div class="row campo-item">
+              <%= campo.nombre %> - 
+              <%= campo.tipo_campo %> - 
+              <%= campo.requerido ? :"Obligatorio" : :"Opcional" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+    <%= link_to :'Crear una nueva categoría', new_categoria_path %>
+  </div>
+</div>

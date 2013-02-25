@@ -1,6 +1,15 @@
-<h1>Editing categoria</h1>
+<% provide :titulo, "Editar categoría #{@categoria.nombre}" %>
+<h1>Editar categoría <%= @categoria.nombre %></h1>
 
-<%= render 'form' %>
+<%= form_for(@categoria) do |f| %>
 
-<%= link_to 'Show', @categoria %> |
-<%= link_to 'Back', categorias_path %>
+  <%= render 'form', form: f %>
+
+  <div class="actions">
+    <%= f.submit "Editar categoría", class: "btn btn-info btn-large boton-formulario" %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Ver', @categoria %>
+<%= link_to 'Cancelar', categorias_path %>

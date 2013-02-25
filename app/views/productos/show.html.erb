@@ -19,7 +19,14 @@
   <b>Precio:</b>
   <%= @producto.precio %>
 </p>
-
+<% @producto.fotos.each_with_index do |foto, i| %>
+  <%= i %>
+  <% if i == 0 %>
+    <%= image_tag foto.imagen.url(:normal) %>
+  <% else %>
+    <%= image_tag foto.imagen.url(:thumb) %>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_producto_path(@producto) %> |
 <%= link_to 'Back', productos_path %>

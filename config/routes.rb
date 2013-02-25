@@ -1,15 +1,13 @@
 Login::Application.routes.draw do
+  resources :fotos
   resources :productos
-
-
   resources :categorias
-
-
-  get "etiquetas/index"
-
   resources :busquedas_posts
   resources :posts
 
+  get "etiquetas/index"
+
+  post 'campos_categoria/:id', to: 'campos#categoria'
   match 'auth/:provider/callback', to: 'sesiones#oauth'
   match 'auth/failure', to: redirect('/')
 

@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require facebook
+//= require chosen
+//= require bootstrap
+//= require lachiquitienda

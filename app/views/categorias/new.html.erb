@@ -1,5 +1,14 @@
-<h1>New categoria</h1>
+<% provide :titulo, :"Crear nueva categoría" %>
+<h1>Crear nueva categoría</h1>
 
-<%= render 'form' %>
+<%= form_for(@categoria) do |f| %>
 
-<%= link_to 'Back', categorias_path %>
+  <%= render 'form', form: f %>
+
+  <div class="actions">
+    <%= f.submit "Crear categoría", class: "btn btn-info btn-large boton-formulario" %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Cancelar', categorias_path %>

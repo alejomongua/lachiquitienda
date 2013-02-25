@@ -1,6 +1,13 @@
-<h1>Editing producto</h1>
+<% provide :titulo, "Editar #{@producto.nombre}" %>
+<h1>Editar <%= @producto.nombre %></h1>
 
-<%= render 'form' %>
+<%= form_for(@producto) do |f| %>
 
-<%= link_to 'Show', @producto %> |
-<%= link_to 'Back', productos_path %>
+  <%= render partial: 'form', locals: { form: f, producto: @producto } %>
+
+  <div class="actions">
+    <%= f.submit "Editar producto", class: "btn btn-info btn-large boton-formulario" %>
+  </div>
+<% end %>
+
+<%= link_to 'Cancelar', @producto %>

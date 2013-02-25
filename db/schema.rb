@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222213023) do
+ActiveRecord::Schema.define(:version => 20130224195055) do
 
   create_table "campos_productos", :force => true do |t|
     t.string   "nombre"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130222213023) do
     t.integer  "categoria_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "slug"
   end
 
   add_index "campos_productos", ["categoria_id"], :name => "index_campos_productos_on_categoria_id"
@@ -29,6 +30,19 @@ ActiveRecord::Schema.define(:version => 20130222213023) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "fotos", :force => true do |t|
+    t.string   "nombre"
+    t.integer  "producto_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+  end
+
+  add_index "fotos", ["producto_id"], :name => "index_fotos_on_producto_id"
 
   create_table "oauths", :force => true do |t|
     t.string   "uid"
@@ -62,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130222213023) do
     t.text     "propiedades"
     t.integer  "cantidad"
     t.boolean  "publicado"
+    t.integer  "descuento"
   end
 
   add_index "productos", ["categoria_id"], :name => "index_productos_on_categoria_id"

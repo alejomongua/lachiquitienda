@@ -23,9 +23,7 @@ class SesionesController < ApplicationController
   end
 
   def oauth
-    usuario = Oauth.where(env["omniauth.auth"].slice(:provider, :uid)).first_or_initialize do |oauth|
-      oauth.token = env["omniauth.auth"].credentials.token
-      oauth.expira = Time.at(env["omniauth.auth"].credentials.expires_at)
+    oauth = Oauth.where(env["omniauth.auth"].slice(:provider, :uid)).first_or_initialize do |oauth|
       if identificado?
         oauth.usuario = usuario_actual
       else
@@ -34,9 +32,11 @@ class SesionesController < ApplicationController
           user.password = user.password_confirmation = SecureRandom.base64
         end
       end
-      oauth.save!
-    end.usuario
-    identificar usuario
+    end
+    oauth.token = env["omniauth.auth"].credentials.token
+    oauth.expira = Time.at(env["omniauth.auth"].credentials.expires_at)
+    oauth.save!
+    identificar oauth.usuario
     flash[:success] = 'Tu cuenta ha sido vinculada a ' + env["omniauth.auth"].provider
     redirect_back_or root_path
   end

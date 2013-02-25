@@ -1,20 +1,12 @@
-<%= form_for(@categoria) do |f| %>
-
-  <%= render 'shared/error_messages', object: f.object %>
+  <%= render 'shared/error_messages', object: form.object %>
 
   <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :nombre %>
+    <%= form.label :nombre, :"Nombre de la categoría" %>
+    <%= form.text_field :nombre %>
   </div>
   
-  <%= f.fields_for :campos do |builder| %>
+  <%= form.fields_for :campos do |builder| %>
     <%= render 'campo_campos', f: builder %>
   <% end %>
-  
-  <%= link_to_add_fields "Añadir campo", f, :campos %>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 
-<% end %>
+  <%= link_to_add_fields "Añadir campo", form, :campos %>

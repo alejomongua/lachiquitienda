@@ -76,3 +76,45 @@ form {
 .etiquetas span a{
   color:white;
 }
+a.remove_fields{
+  color:red;
+  padding-left: 0.5em;
+  font-size:1.2em;
+}
+div.row.categoria-item, fieldset.campo, #imagenes div.foto{
+  border:1px solid black;
+  border-radius: 4px;
+  padding: 1em 1em 0em;
+  margin-top: 1em;
+  div.nombre-categoria{
+    text-align:center;
+    padding-bottom:1em;
+    span.nombre-categoria{
+      font-size:1.2em;
+      font-weight:bold;
+    }
+  }
+}
+#informacion-basica{
+  input, textarea {
+    width:auto;
+    max-width:95%;
+  }
+}
+.obligatorio label{
+  font-weight:bold;
+}
+.actions{
+  margin:0 auto;
+  text-align: center;
+}
+a.add_fields{
+  margin-top:1em;
+}
+#imagenes div.fotico{
+  float:left;
+  margin-bottom:1em;
+}
+.brand{
+  font-family:"Snowburst One", Calibri, Candara, Arial, sans-serif;
+}
