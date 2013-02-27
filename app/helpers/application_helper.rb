@@ -3,7 +3,7 @@
 module ApplicationHelper
   # retorna el tìtulo completo.
   def titulo_completo(titulo)
-    titulo_base = "Nombre de la aplicación"
+    titulo_base = "La Chiquitienda"
     if titulo.empty?
       titulo_base
     else

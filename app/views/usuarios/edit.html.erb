@@ -44,25 +44,27 @@
           <%= f.text_field :email %>
         </div>
       </div>
-      <div class="row centrado" id="activar-modificar-password" >
-        <a href="#">Modificar contraseña</a>
-      </div>
       <div id="modificar-password">
-        <div class="row">
-          <div class="span4 marca">
-            <%= f.label :password, "Contraseña" %>
-          </div>
-          <div class="span3">
-            <%= f.password_field :password %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="span4 marca">
-            <%= f.label :password_confirmation, "Confirma tu contraseña" %>
-          </div>
-          <div class="span3">
-            <%= f.password_field :password_confirmation %>
-          </div>
+        <div class="row centrado" id="activar-modificar-password" >
+          <a href="#">Modificar contraseña</a>
+            <script type="text/html" id="plantilla-password">
+              <div class="row">
+                <div class="span4 marca">
+                  <%= f.label :password, "Contraseña" %>
+                </div>
+                <div class="span3">
+                  <%= f.password_field :password %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span4 marca">
+                  <%= f.label :password_confirmation, "Confirma tu contraseña" %>
+                </div>
+                <div class="span3">
+                  <%= f.password_field :password_confirmation %>
+                </div>
+              </div>
+            </script>
         </div>
       </div>
       <div class="row">

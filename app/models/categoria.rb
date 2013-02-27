@@ -4,4 +4,5 @@ class Categoria < ActiveRecord::Base
   accepts_nested_attributes_for :campos, allow_destroy: true
 
   validates :nombre, presence: true
+  validates_uniqueness_of :nombre
 end

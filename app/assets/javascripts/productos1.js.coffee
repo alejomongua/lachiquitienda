@@ -13,7 +13,6 @@ jQuery ->
       success: (data) ->
         $('#campos-categoria').text('')
         for i in data
-          console.log i
           $('#campos-categoria').append(Mustache.to_html($('#plantilla-' + i.tipo_campo).html(), i))
     })
 

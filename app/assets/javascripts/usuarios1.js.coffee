@@ -4,6 +4,5 @@
 
 jQuery(document).ready ($) ->
   $('div#activar-modificar-password a').click ->
-    $("div#modificar-password").show()
-    $('div#activar-modificar-password').hide()
+    $("div#modificar-password").html(Mustache.to_html($('#plantilla-password').html()))
     return false

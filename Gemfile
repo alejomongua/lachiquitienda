@@ -11,6 +11,8 @@ gem 'sqlite3', '1.3.6'
 gem 'omniauth-facebook', '1.4.0'
 gem 'acts-as-taggable-on', '2.3.3'
 gem 'paperclip', '3.4.1'
+gem 'faker', '1.0.1'
+
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
