@@ -23,7 +23,8 @@ FactoryGirl.define do
   factory :producto do
     sequence(:nombre) { |n| "Producto #{n}"}
     sequence(:descripcion) { |n| "Lorem Ipsum #{n}"}
-    categoria
-    
+    precio Random.rand(2..30).to_i * 1000
+    cantidad Random.rand 1..20
+    categoria  
   end
 end

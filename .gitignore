@@ -31,3 +31,4 @@ config/facebook.yml
 config/gmail.yml
 
 public/fotos/*
+config/database.yml

@@ -12,7 +12,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'acts-as-taggable-on', '2.3.3'
 gem 'paperclip', '3.4.1'
 gem 'faker', '1.0.1'
-
+gem 'pg', '0.12.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
@@ -41,7 +41,3 @@ group :test do
   gem 'launchy', '2.1.2'
   gem 'poltergeist', '1.0.2'
 end
-
-#group :production do
-#  gem 'pg', '0.12.2'
-#end

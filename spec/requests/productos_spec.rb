@@ -3,5 +3,5 @@
 require 'spec_helper'
 
 describe "Productos" do
-
+  let(:producto) { FactoryGirl.build(:producto) }
 end
