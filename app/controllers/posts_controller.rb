@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order(:created_at, desc: true)
+    @posts = Post.order('created_at desc')
     if params[:etiquetas]
       @posts = @posts.tagged_with(params[:etiquetas]) 
       @etiqueta = params[:etiquetas]

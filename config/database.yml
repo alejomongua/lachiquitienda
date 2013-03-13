@@ -7,17 +7,17 @@ test:
 development:
   adapter: postgresql
   encoding: unicode
-  database: lach_dev
+  database: lachiqui_dev
   pool: 5
   host: localhost
-  username: chiquitienda
-  password: lachiquitienda.com
+  username: lachiquitienda
+  password: Y7rwlW3a
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: lach_db
+  database: lachiqui_db
   pool: 5
   host: localhost
-  username: chiquitienda
-  password: lachiquitienda.com
+  username: lachiquitienda
+  password: Y7rwlW3a

@@ -20,10 +20,16 @@ class Producto < ActiveRecord::Base
   validate :validar_propiedades
 
   def validar_propiedades
-    categoria.campos.each do |field|
-      if field.requerido? && propiedades[field.slug].blank?
-        errors.add field.nombre, "no debe estar en blanco"
+    unless categoria.nil?
+      categoria.campos.each do |field|
+        if field.requerido? && propiedades[field.slug].blank?
+          errors.add field.nombre, "no debe estar en blanco"
+        end
       end
     end
+  end
+
+  def to_param
+    "#{id}-#{nombre}".parameterize
   end
 end

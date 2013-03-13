@@ -16,6 +16,7 @@
       <% end %>
     </div>
   <% end %>
+  <div id="comentarios"></div>
   <% if identificado? && usuario_actual.admin %>
     <div class="acciones">
       <%= link_to "Editar", edit_post_path(@post) %>

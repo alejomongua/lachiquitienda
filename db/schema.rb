@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224195055) do
+ActiveRecord::Schema.define(:version => 20130313013107) do
 
   create_table "campos_productos", :force => true do |t|
     t.string   "nombre"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20130224195055) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "slug"
+    t.boolean  "filtro"
+    t.boolean  "opcion"
   end
 
   add_index "campos_productos", ["categoria_id"], :name => "index_campos_productos_on_categoria_id"
@@ -53,6 +55,16 @@ ActiveRecord::Schema.define(:version => 20130224195055) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "opciones", :force => true do |t|
+    t.string   "nombre"
+    t.string   "valor"
+    t.integer  "campo_producto_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "opciones", ["campo_producto_id"], :name => "index_opciones_on_campo_producto_id"
 
   create_table "posts", :force => true do |t|
     t.string   "titulo"

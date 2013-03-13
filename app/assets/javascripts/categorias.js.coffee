@@ -13,3 +13,9 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
+
+  $('.tipo_campo').change ->
+    if $(this).val() == 'opciones'
+      $(this).siblings('.opciones').show()
+    else
+      $(this).siblings('.opciones').hide()

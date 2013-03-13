@@ -33,3 +33,6 @@ jQuery ->
     console.log $(this).attr("data-id")
     console.log evt
     console.log "error"
+
+  # colorbox
+  $(".foto").colorbox({rel:'foto'});

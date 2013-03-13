@@ -3,6 +3,6 @@
     <%= f.label campo.slug %>
   </div>
   <div class="span5">
-    <%= f.text_area campo.slug, cols: 50, rows: 8 %>
+    <%= f.collection_select campo.slug, campo.opciones, :valor, :nombre %>
   </div>
 </div>

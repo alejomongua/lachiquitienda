@@ -1,4 +1,7 @@
 Login::Application.routes.draw do
+  resources :opciones
+
+
   resources :fotos
   resources :productos
   resources :categorias

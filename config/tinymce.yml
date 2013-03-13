@@ -1,0 +1,11 @@
+default:
+  theme_advanced_toolbar_align: left
+  theme_advanced_buttons3_add:
+    - tablecontrols
+  plugins:
+    - table
+
+comentario:
+  theme_advanced_buttons1: "bold,italic,underline,separator,cut,copy,paste,undo,redo,separator,link,unlink,cleanup"
+  theme_advanced_buttons2: ""
+  theme_advanced_buttons3: ""

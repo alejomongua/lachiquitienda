@@ -1,32 +1,50 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Nombre:</b>
-  <%= @producto.nombre %>
-</p>
-
-<p>
-  <b>Descripcion:</b>
-  <%= @producto.descripcion %>
-</p>
-
-<p>
-  <b>Categoria:</b>
-  <%= @producto.categoria %>
-</p>
-
-<p>
-  <b>Precio:</b>
-  <%= @producto.precio %>
-</p>
-<% @producto.fotos.each_with_index do |foto, i| %>
-  <%= i %>
-  <% if i == 0 %>
-    <%= image_tag foto.imagen.url(:normal) %>
-  <% else %>
-    <%= image_tag foto.imagen.url(:thumb) %>
+<% provide(:titulo, @producto.nombre) %>
+<h1> <%= @producto.nombre %> </h1>
+<div class="detalles-producto">
+  <div class="row">
+    <div class="span6 fotos">
+      <% @producto.fotos.each_with_index do |foto, i| %>
+        <% if i == 0 %>
+          <%= link_to((image_tag foto.imagen.url(:normal), class: :"main-foto"), foto.imagen.url(:normal), class: :"foto") %>
+        <% elsif i < 5 %>
+          <%= link_to((image_tag foto.imagen.url(:thumb), class: :"thumb-foto"), foto.imagen.url(:normal), class: :"foto") %>
+        <% else %>
+          <%= link_to((image_tag foto.imagen.url(:thumb), class: :"thumb-foto"), foto.imagen.url(:normal), class: :"foto", style: :"display:none") %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="span6">
+      <div class="descripcion">
+        <h3>Descripción</h3>
+        <p><%= @producto.descripcion %></p>
+      </div>
+      <div class="precio">
+        <% if @producto.descuento.nil? || (@producto.descuento == 0) %>
+          Por solo <%= raw precio @producto.precio %>
+        <% else %>
+          Antes: <span class="precio-anterior"><%= raw precio @producto.precio %></span>
+          <span class="precio-actual"><%= raw precio(@producto.precio - @producto.descuento) %></span>
+        <% end %>
+      </div>
+      <div class="carrito">
+        Añadir al carrito de compras
+      </div>
+      <div class="social">
+        <div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-send="true" data-layout="box_count" data-width="100" data-show-faces="false" fb-xfbml-state="rendered"></div>
+        <div class="tweet-this"></div>
+        <div class="google-plus-one"></div>
+      </div>
+    </div>
+  </div>
+  <div id="comentarios"></div>
+  <% if identificado? && usuario_actual.admin %>
+    <div class="acciones">
+      <%= link_to "Editar", edit_producto_path(@producto) %>
+      | <%= link_to "Eliminar", producto_path(@producto), method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
+    </div>
   <% end %>
+</div>
+<% content_for :descripcion do %><%= @producto.descripcion %><% end %>
+<% unless @producto.etiqueta_list.blank? %>
+  <% content_for :keywords do %><%= @producto.etiqueta_list %><% end %>
 <% end %>
-
-<%= link_to 'Edit', edit_producto_path(@producto) %> |
-<%= link_to 'Back', productos_path %>

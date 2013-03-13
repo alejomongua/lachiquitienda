@@ -1,7 +1,14 @@
 <fieldset class="campo">
-  <%= f.select :tipo_campo, %w[texto texto_extenso numero decimal check_box] %>
+  <%= f.select :tipo_campo, CampoProducto::TIPOS, {}, class: "tipo_campo" %>
   <%= f.text_field :nombre, placeholder: :"nombre del campo" %>
   <%= f.check_box :requerido %> Requerido |
+  <%= f.check_box :filtro %> Filtrar por |
   <%= f.hidden_field :_destroy %>
   <%= link_to :"Borrar", '#', class: :"remove_fields" %>
+  <div class="opciones">
+    <%= f.fields_for :opciones do |builder| %>
+      <%= render 'opcion_campos', f: builder %>
+    <% end %>  
+    <%= link_to_add_fields "Añadir opcion", f, :opciones %>
+  </div>
 </fieldset>

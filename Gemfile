@@ -13,6 +13,7 @@ gem 'acts-as-taggable-on', '2.3.3'
 gem 'paperclip', '3.4.1'
 gem 'faker', '1.0.1'
 gem 'pg', '0.12.2'
+gem 'tinymce-rails', '3.5.8.1'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

@@ -1,0 +1,2 @@
+class OpcionesController < ApplicationController
+end

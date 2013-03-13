@@ -115,3 +115,20 @@ a.add_fields{
 .brand{
   font-family:"Snowburst One", Calibri, Candara, Arial, sans-serif;
 }
+.precio-centenas {
+  vertical-align:super;
+  font-size:0.7em;
+}
+.precio {
+
+}
+.main-foto{
+  clear:both;
+  text-align: center;
+  display:block;
+}
+.foto img{
+  max-width:100%;
+  padding:0.5em;
+  margin:0.3em;
+}

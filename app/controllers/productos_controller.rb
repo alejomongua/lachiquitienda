@@ -1,8 +1,12 @@
+#encoding: utf-8
+
 class ProductosController < ApplicationController
+  before_filter :administrar, except: [:index, :show]
+
   # GET /productos
   # GET /productos.json
   def index
-    @productos = Producto.all
+    @productos = Producto.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -78,6 +82,13 @@ class ProductosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to productos_url }
       format.json { head :no_content }
+    end
+  end
+
+private
+  def administrar
+    unless identificado? && usuario_actual.admin
+      redirect_to root_path
     end
   end
 end
