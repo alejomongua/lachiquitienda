@@ -1,0 +1,14 @@
+development:
+  user: 'ventas@lachiquitienda.com'
+  password: 'q632N=AU-'
+  domain: 'lachiquitienda.com'
+
+test:
+  user: 'ventas@lachiquitienda.com'
+  password: 'q632N=AU-'
+  domain: 'lachiquitienda.com'
+
+production:
+  user: 'ventas@lachiquitienda.com'
+  password: 'q632N=AU-'
+  domain: 'lachiquitienda.com'

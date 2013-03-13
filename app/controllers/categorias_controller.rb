@@ -1,4 +1,6 @@
 class CategoriasController < ApplicationController
+  before_filter :administrar, only: [:new, :edit, :delete, :update, :create]
+  before_filter :limpiar_opciones, only: [:update, :create]
   # GET /categorias
   # GET /categorias.json
   def index
@@ -78,6 +80,31 @@ class CategoriasController < ApplicationController
     respond_to do |format|
       format.html { redirect_to categorias_url }
       format.json { head :no_content }
+    end
+  end
+
+  def campos
+    @campos = Categoria.find(params[:id]).campos.includes(:opciones)
+    @campos.each do |c|
+      c[:opciones] = c.opciones
+    end
+    respond_to do |format|
+      format.json { render json: @campos }
+    end
+  end
+private
+  def limpiar_opciones
+    if params[:categoria][:campos_attributes]
+      params[:categoria][:campos_attributes].each do |k,v|
+        if v[:tipo_campo] != 'opciones'
+          params[:categoria][:campos_attributes][k].delete :opciones_attributes
+        end
+      end
+    end
+  end
+  def administrar
+    unless identificado? && usuario_actual.admin
+      redirect_to root_path
     end
   end
 end

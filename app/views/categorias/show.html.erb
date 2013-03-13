@@ -1,10 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Nombre:</b>
-  <%= @categoria.nombre %>
-</p>
-
-
-<%= link_to 'Edit', edit_categoria_path(@categoria) %> |
-<%= link_to 'Back', categorias_path %>
+<% provide(:titulo, @categoria.nombre) %>
+<h1> <%= @categoria.nombre %> </h1>
+<div class="detalles-categoria">
+  <div class="row">
+    <div class="span6 fotos">
+      <% if @categoria.foto %>
+          <%= link_to((image_tag @categoria.foto.imagen.url(:normal), class: :"main-foto"), @categoria.foto.imagen.url(:normal), class: :"foto") %>
+      <% end %>
+    </div>
+    <div class="span6 productos">
+      <% @categoria.productos.each do |producto| %>
+        <%= render 'producto/item_lista', producto: producto %>
+      <% end %>
+    </div>
+  </div>
+  <% if identificado? && usuario_actual.admin %>
+    <div class="acciones">
+      <%= link_to "Editar", edit_categoria_path(@categoria) %>
+      | <%= link_to "Eliminar", @categoria, method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
+    </div>
+  <% end %>
+</div>

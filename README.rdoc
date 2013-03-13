@@ -8,7 +8,7 @@ Soporta conexión con facebook gracias a la gema omniauth-facebook
 
 Es necesario crear los archivos config/initializers/facebook.yml y config/initializers/gmail.yml.
 
-En config/initializers/facebook.yml deben estar la [.app_id] y el [.secret]:
+En config/facebook.yml deben estar la [.app_id] y el [.secret]:
 
     development:
       app_id:123456
@@ -22,7 +22,7 @@ En config/initializers/facebook.yml deben estar la [.app_id] y el [.secret]:
       app_id:6571259
       secret:34gsdfgry56twesrty5hftgh6
 
-En config/initializers/gmail.yml debe estar la configuracion de su cuenta de gmail
+En config/gmail.yml debe estar la configuracion de su cuenta de gmail
 
     gmail:
       user_name: pepito_perez

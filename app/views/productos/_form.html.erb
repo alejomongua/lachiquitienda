@@ -167,3 +167,17 @@
   </div>
 </div>
 </script>
+<script type="text/html" id="plantilla-opciones">
+<div class="row">
+  <div class="span3 marca">
+    <label for="producto_propiedades_{{slug}}">{{nombre}}</label>
+  </div>
+  <div class="span5">
+    <select id="producto_propiedades_{{slug}}" name="producto[propiedades][{{slug}}]">
+      {{#opciones}}
+        <option value="{{valor}}">{{nombre}}</opcion>
+      {{/opciones}}
+    </select>
+  </div>
+</div>
+</script>

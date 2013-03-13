@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313013107) do
+ActiveRecord::Schema.define(:version => 20130313200933) do
 
   create_table "campos_productos", :force => true do |t|
     t.string   "nombre"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130313013107) do
     t.string   "imagen_content_type"
     t.integer  "imagen_file_size"
     t.datetime "imagen_updated_at"
+    t.integer  "categoria_id"
   end
 
   add_index "fotos", ["producto_id"], :name => "index_fotos_on_producto_id"

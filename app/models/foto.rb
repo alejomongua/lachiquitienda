@@ -1,5 +1,6 @@
 class Foto < ActiveRecord::Base
   belongs_to :producto
+  belongs_to :categoria
   attr_accessible :nombre, :imagen
 
   has_attached_file :imagen, styles: { normal: "640x480>", thumb: "100x100#" }

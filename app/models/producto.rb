@@ -7,7 +7,7 @@ class Producto < ActiveRecord::Base
   acts_as_taggable_on :etiquetas
   serialize :propiedades, Hash
 
-  has_many :fotos
+  has_many :fotos, dependent: :restrict
   accepts_nested_attributes_for :fotos, allow_destroy: true
 
   validates_presence_of :categoria

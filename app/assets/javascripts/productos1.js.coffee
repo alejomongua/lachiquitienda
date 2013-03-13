@@ -8,7 +8,7 @@ jQuery ->
   $('#producto_categoria_id').change ->
     $('#campos-categoria').text('Cargando...')
     $.ajax({
-      url: '/campos_categoria/' + $('#producto_categoria_id').val() + '.json',
+      url: '/categorias/' + $('#producto_categoria_id').val() + '/campos.json',
       type: 'POST',
       success: (data) ->
         $('#campos-categoria').text('')
