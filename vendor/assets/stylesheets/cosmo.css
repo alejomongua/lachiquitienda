@@ -5076,7 +5076,7 @@ a.badge:hover {
   font-weight: 200;
   line-height: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #eeefff;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -5087,6 +5087,7 @@ a.badge:hover {
   line-height: 1;
   color: inherit;
   letter-spacing: -1px;
+  text-align:center;
 }
 .hero-unit li {
   line-height: 30px;
@@ -5527,9 +5528,9 @@ legend {
 }
 .hero-unit {
   border: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;

@@ -1,6 +1,8 @@
 $break-large: 979px;
 $break-middle: 767px;
 body{
+  background: url('/images/backgrounds/bg2.jpg');
+  background-repeat:repeat;
   padding-top:80px;
   @media screen and (max-width: $break-large) {
     padding-top:0px;
@@ -137,4 +139,7 @@ a.add_fields{
     text-align: center;
     margin:0 auto;
   }
+}
+.imagen-categoria{
+  float:left;
 }
