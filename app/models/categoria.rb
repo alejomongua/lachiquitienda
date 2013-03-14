@@ -11,4 +11,9 @@ class Categoria < ActiveRecord::Base
 
   validates :nombre, presence: true
   validates_uniqueness_of :nombre
+
+  def to_param
+    "#{id}-#{nombre}".parameterize
+  end
+
 end

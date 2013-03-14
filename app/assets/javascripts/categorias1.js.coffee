@@ -19,3 +19,6 @@ jQuery ->
       $(this).siblings('.opciones').show()
     else
       $(this).siblings('.opciones').hide()
+
+  # colorbox
+  $(".foto").colorbox({rel:'foto'});

@@ -4,7 +4,7 @@ class CategoriasController < ApplicationController
   # GET /categorias
   # GET /categorias.json
   def index
-    @categorias = Categoria.all
+    @categorias = Categoria.paginate(page: params[:page]).includes(:foto)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class CategoriasController < ApplicationController
   # GET /categorias/1
   # GET /categorias/1.json
   def show
-    @categoria = Categoria.find(params[:id])
+    @categoria = Categoria.includes(:productos, :foto).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,7 @@ class CategoriasController < ApplicationController
 
   # GET /categorias/1/edit
   def edit
-    @categoria = Categoria.find(params[:id])
+    @categoria = Categoria.includes(:productos, :foto).find(params[:id])
   end
 
   # POST /categorias

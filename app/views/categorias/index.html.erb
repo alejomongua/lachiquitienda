@@ -2,28 +2,29 @@
 <div class="row">
   <div class="span12">
     <h1>Lista de categorías de productos</h1>
-
-    <% @categorias.each do |categoria| %>
-      <div class="row categoria-item">
-        <div class="span3 nombre-categoria">
-          <span class="nombre-categoria"><%= categoria.nombre %></span>
-          <br>
-          <%= link_to "Editar", edit_categoria_path(categoria) %>
-           | 
-          <%= link_to "Eliminar", categoria, method: :delete %>
+    <div class="row">
+    <% @categorias.each_with_index do |categoria,i| %>
+      <% if (i != 0) && (i % 4 == 0) %>
+        <div class="row">
+      <% end %>
+        <div class="span3 categoria-lista">
+        <h4 class="nombre-categoria"><%= link_to categoria.nombre, categoria %></h4>
+        <% if categoria.foto %>
+          <%= link_to((image_tag categoria.foto.imagen.url(:thumb), class: :"main-foto"), categoria) %>
+        <% else %>
+          <%= link_to(default_foto(:thumb), categoria) %>
+        <% end %>
         </div>
-        <div class="span8 campos-categoria">
-          <% categoria.campos.each do |campo| %>
-            <div class="row campo-item">
-              <%= campo.nombre %> - 
-              <%= campo.tipo_campo %> - 
-              <%= campo.requerido ? :"Obligatorio" : :"Opcional" %>
-            </div>
-          <% end %>
+      <% if (i != 0) && (i % 4 == 0) %>
         </div>
-      </div>
-    <% end %>
-    
-    <%= link_to :'Crear una nueva categoría', new_categoria_path %>
+      <% end %>
+    <% end %>    
+    </div>
   </div>
 </div>
+<% if identificado? && usuario_actual.admin %>
+  <hr>
+  <div class="acciones">
+    <%= link_to :'Crear una nueva categoría', new_categoria_path %>
+  </div>
+<% end %>    

@@ -6,7 +6,7 @@ class ProductosController < ApplicationController
   # GET /productos
   # GET /productos.json
   def index
-    @productos = Producto.paginate(page: params[:page])
+    @productos = Producto.paginate(page: params[:page]).includes(:fotos)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class ProductosController < ApplicationController
   # GET /productos/1
   # GET /productos/1.json
   def show
-    @producto = Producto.find(params[:id])
+    @producto = Producto.includes(:fotos).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +38,7 @@ class ProductosController < ApplicationController
 
   # GET /productos/1/edit
   def edit
-    @producto = Producto.find(params[:id])
+    @producto = Producto.includes(:fotos).find(params[:id])
   end
 
   # POST /productos

@@ -39,8 +39,8 @@
   <div id="comentarios"></div>
   <% if identificado? && usuario_actual.admin %>
     <div class="acciones">
-      <%= link_to "Editar", edit_producto_path(@producto) %>
-      | <%= link_to "Eliminar", producto_path(@producto), method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
+      <%= link_to :"Editar", edit_producto_path(@producto) %>
+      | <%= link_to :"Eliminar", producto_path(@producto), method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
     </div>
   <% end %>
 </div>

@@ -132,3 +132,9 @@ a.add_fields{
   padding:0.5em;
   margin:0.3em;
 }
+.categoria-lista, .categoria-lista img {
+  @media screen and (max-width: $break-middle) {
+    text-align: center;
+    margin:0 auto;
+  }
+}
