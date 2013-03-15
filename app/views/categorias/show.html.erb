@@ -9,10 +9,17 @@
     </div>
   </div>
   <div class="row">
-    <% @categoria.productos.each do |producto| %>
+    <% @categoria.productos.each_with_index do |producto,i| %>
+      <% if (i != 0) && (i % 4 == 0) %>
+        <div class="row">
+      <% end %>
       <%= render 'productos/item_lista', producto: producto %>
-    <% end %>
+      <% if (i != 0) && (i % 4 == 0) %>
+        </div>
+      <% end %>
+    <% end %>    
   </div>
+  <hr>
   <% if identificado? && usuario_actual.admin %>
     <div class="acciones">
       <%= link_to "Editar", edit_categoria_path(@categoria) %>

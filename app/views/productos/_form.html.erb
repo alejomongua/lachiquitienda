@@ -108,7 +108,7 @@
             <%= image_tag foto.imagen.url(:thumb) %>
           </div>
           <div class="span3">
-            <%= link_to "Eliminar", foto_path(foto), method: :delete, confirm: "¿Está seguro?", remote: true, class: :"eliminar-foto", :"data-id" => foto.id, :"data-type" => :json %>
+            <%= link_to "Eliminar", producto_foto_path(foto), method: :delete, confirm: "¿Está seguro?", remote: true, class: :"eliminar-foto", :"data-id" => foto.id, :"data-type" => :json %>
           </div>
         </div>
       </div>

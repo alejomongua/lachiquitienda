@@ -1,0 +1,7 @@
+<div class="span3 producto-lista">
+  <h4>producto.nombre</h4>
+  <div class="row">
+    <%= link_to(image_tag(producto.fotos.first.imagen.url(:thumb)), producto) %>
+  </div>
+  <a class="btn btn-primary btn-small" href="#"><i class="icon-shopping-cart icon-white"></i> Añadir al carrito</a>
+</div>

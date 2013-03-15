@@ -1,7 +1,7 @@
 $break-large: 979px;
 $break-middle: 767px;
 body{
-  background: url('/images/backgrounds/bg2.jpg');
+  background: url('/images/backgrounds/bg6.jpg');
   background-repeat:repeat;
   padding-top:80px;
   @media screen and (max-width: $break-large) {
@@ -134,11 +134,12 @@ a.add_fields{
   padding:0.5em;
   margin:0.3em;
 }
-.categoria-lista, .categoria-lista img {
-  @media screen and (max-width: $break-middle) {
+.categoria-lista, .categoria-lista img, .producto-lista, .producto-lista img {
     text-align: center;
     margin:0 auto;
-  }
+    a.btn{
+      margin-top: 1em;
+    }
 }
 .imagen-categoria{
   float:left;
