@@ -1,7 +1,19 @@
 <div class="span3 producto-lista">
-  <h4>producto.nombre</h4>
+  <h4><%= link_to producto.nombre, producto %></h4>
   <div class="row">
     <%= link_to(image_tag(producto.fotos.first.imagen.url(:thumb)), producto) %>
   </div>
+  <% if producto.descuento && (producto.descuento != 0) %>
+    <div class="precio-antes">
+      Antes 
+      <span class="contenedor-antes">
+        <%= raw precio producto.precio %>
+        <div class="tachado"></div>
+      </span>
+    </div>
+    <div class="precio">ahora solo <%= raw precio(producto.precio - producto.descuento) %></div>
+  <% else %>
+    <div class="precio"><%= raw precio producto.precio %></div>
+  <% end %>
   <a class="btn btn-primary btn-small" href="#"><i class="icon-shopping-cart icon-white"></i> Añadir al carrito</a>
 </div>

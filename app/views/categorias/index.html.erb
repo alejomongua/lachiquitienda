@@ -1,7 +1,11 @@
 <% provide :titulo, :"Lista de categorías de productos" %>
 <div class="row">
   <div class="span12">
-    <h1>Lista de categorías de productos</h1>
+    <div class="row">
+      <div class="hero-unit">
+        <h1>Listado por categorías</h1>
+      </div>
+    </div>
     <div class="row">
     <% @categorias.each_with_index do |categoria,i| %>
       <% if (i != 0) && (i % 4 == 0) %>

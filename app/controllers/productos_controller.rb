@@ -6,7 +6,8 @@ class ProductosController < ApplicationController
   # GET /productos
   # GET /productos.json
   def index
-    @productos = Producto.paginate(page: params[:page]).includes(:fotos)
+    por_pagina = params[:por_pagina] || 18
+    @productos = Producto.paginate(page: params[:page], per_page: por_pagina).includes(:fotos)
 
     respond_to do |format|
       format.html # index.html.erb

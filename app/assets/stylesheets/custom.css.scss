@@ -119,10 +119,31 @@ a.add_fields{
 }
 .precio-centenas {
   vertical-align:super;
-  font-size:0.7em;
+  font-size:0.8em;
 }
-.precio {
-
+.precio-antes {
+  .contenedor-antes{
+    position: relative;
+    .tachado{
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:2;
+    }
+  } 
+}
+.precio{
+  font-size:1.2em;
+}
+.precio-producto{
+  margin:1em;
+  padding:1em;
+  border:1px solid #ddd;
+  border-radius:1em;
+  font-size:1.2em;
+  text-align: center;
 }
 .main-foto{
   clear:both;
@@ -143,4 +164,8 @@ a.add_fields{
 }
 .imagen-categoria{
   float:left;
+}
+.carrito{
+  margin:1em auto;
+  text-align:center;
 }

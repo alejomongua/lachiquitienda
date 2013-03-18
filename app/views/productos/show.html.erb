@@ -18,12 +18,39 @@
         <h3>Descripción</h3>
         <p><%= @producto.descripcion %></p>
       </div>
-      <div class="precio">
-        <% if @producto.descuento.nil? || (@producto.descuento == 0) %>
-          Por solo <%= raw precio @producto.precio %>
+      <div class="detalles-producto">
+        <h3>Detalles del producto</h3>
+        <% @producto.propiedades.each do |propiedad, valor| %>
+          <% unless valor.blank? %>
+            <div class="row">
+              <div class="span3">
+                <b><%= propiedad %>:</b>
+              </div>
+              <div class="span3">
+                <% if valor == 'checkbox_checked' %>
+                  Si
+                <% elsif valor == 'checkbox_unchecked' %>
+                  No
+                <% else %>
+                  <%= valor %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="precio-producto">
+        <% if @producto.descuento && (@producto.descuento != 0) %>
+          <div class="precio-antes">
+            Antes
+            <span class="contenedor-antes">
+              <%= raw precio @producto.precio %>
+              <div class="tachado"></div>
+            </span>
+          </div>
+          <div class="precio">ahora solo <%= raw precio(@producto.precio - @producto.descuento) %></div>
         <% else %>
-          Antes: <span class="precio-anterior"><%= raw precio @producto.precio %></span>
-          <span class="precio-actual"><%= raw precio(@producto.precio - @producto.descuento) %></span>
+          <div class="precio"><%= raw precio producto.precio %></div>
         <% end %>
       </div>
       <div class="carrito">

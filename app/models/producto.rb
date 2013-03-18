@@ -15,7 +15,7 @@ class Producto < ActiveRecord::Base
   validates :nombre, presence: true
   validates :precio, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :cantidad, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :descuento, numericality: { only_integer: true, greater_than_or_equal_to: 0, lower_than_or_equal_to: 100 }, allow_blank: true
+  validates :descuento, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_blank: true
   validates :publicado, inclusion: {in: [true, false]}, allow_blank: true
   validate :validar_propiedades
 

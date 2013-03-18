@@ -33,7 +33,7 @@
 
     <div class="row">
       <div class="span3 marca">
-        <%= form.label :descuento, "Descuento (%)" %>
+        <%= form.label :descuento, "Descuento $" %>
       </div>
       <div class="span5">
         <%= form.number_field :descuento %>
@@ -160,7 +160,7 @@
 <script type="text/html" id="plantilla-check_box">
 <div class="row">
   <div class="span3 marca">
-    <input name="producto[propiedades][{{slug}}]" type="hidden" value="0"><input id="producto_propiedades_{{slug}}" name="producto[propiedades][{{slug}}]" type="checkbox" value="1"> 
+    <input name="producto[propiedades][{{slug}}]" type="hidden" value="checkbox_unchecked"><input id="producto_propiedades_{{slug}}" name="producto[propiedades][{{slug}}]" type="checkbox" value="checkbox_checked"> 
   </div>
   <div class="span5">
     {{nombre}}

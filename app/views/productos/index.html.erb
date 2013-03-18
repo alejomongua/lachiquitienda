@@ -1,29 +1,27 @@
-<h1>Listing productos</h1>
+<% provide(:titulo, :Tienda) %>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Descripcion</th>
-    <th>Categoria</th>
-    <th>Precio</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="row">
+    <div class="hero-unit">
+      <h1> Nuestros productos </h1>
+    <div class="clearfix"></div>
+  </div>
+  <div class="row">
+    <% @productos.each_with_index do |producto,i| %>
+      <% if (i != 0) && (i % 4 == 0) %>
+        <div class="row">
+      <% end %>
+      <%= render 'productos/item_lista', producto: producto %>
+      <% if (i != 0) && (i % 4 == 0) %>
+        </div>
+      <% end %>
+    <% end %>    
+  </div>
 
-<% @productos.each do |producto| %>
-  <tr>
-    <td><%= producto.nombre %></td>
-    <td><%= producto.descripcion %></td>
-    <td><%= producto.categoria %></td>
-    <td><%= producto.precio %></td>
-    <td><%= link_to 'Show', producto %></td>
-    <td><%= link_to 'Edit', edit_producto_path(producto) %></td>
-    <td><%= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Producto', new_producto_path %>
+  <%= will_paginate %>
+  <hr>
+  <% if identificado? && usuario_actual.admin %>
+    <div class="acciones">
+      <%= link_to "Nuevo producto", new_producto_path %>
+      | <%= link_to "Nueva categoria", new_categoria_path %>
+    </div>
+  <% end %>
