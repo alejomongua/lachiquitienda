@@ -22,6 +22,8 @@ Login::Application.routes.draw do
   match "registrate", to: 'usuarios#new'
   match "agradecimientos", to: 'paginas_estaticas#agradecimientos'
   match "politica_de_privacidad", to: 'paginas_estaticas#politica_de_privacidad'
+  match "pedidos_y_devoluciones", to: 'paginas_estaticas#pedidos_devoluciones'
+  match "condiciones_del_servicio", to: 'paginas_estaticas#condiciones'
   match "acerca_de_nosotros", to: 'paginas_estaticas#acerca_de'
   match "olvide_contrasena", to: "usuarios#generar_tokens", via: :post
   match "olvide_contrasena", to: "usuarios#olvide_contrasena", via: :get
