@@ -1,0 +1,19 @@
+<div class="post">
+  <h4><%= link_to post.titulo, post %></h4>
+  <% unless post.publicado %>
+    <span class="no-publicado">No publicado</span>
+  <% end %>
+  <div class="info-post">Publicado el <%= l post.created_at, format: "%d de %B de %Y a las %I:%M %P" %> por <%= post.autor.nombre %></div>
+  <div class="contenido-post">
+    <%= raw post.contenido.split('<!-- leer_mas -->').first %>
+    <% if post.contenido.include? '<!-- leer_mas -->' %>
+      <%= link_to "... (leer más)", post %>
+    <% end %>
+  </div>
+  <% if identificado? && usuario_actual.admin %>
+    <div class="acciones">
+      <%= link_to "Editar", edit_post_path(post) %>
+      | <%= link_to "Eliminar", post_path(post), method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
+    </div>
+  <% end %>
+</div>

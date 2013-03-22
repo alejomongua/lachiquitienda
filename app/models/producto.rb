@@ -2,7 +2,9 @@ class Producto < ActiveRecord::Base
   attr_accessible :descripcion, :nombre, :precio, :propiedades, 
                   :cantidad, :publicado, :etiqueta_list, :categoria_id,
                   :descuento, :fotos_attributes
-  
+
+  scope :publicados, where(publicado: true)
+
   belongs_to :categoria
   acts_as_taggable_on :etiquetas
   serialize :propiedades, Hash

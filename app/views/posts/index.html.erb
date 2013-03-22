@@ -8,24 +8,7 @@
 <%= will_paginate %>
 <div class="lista posts">
   <% @posts.each do |post| %>
-    <div class="post">
-      <h2><%= link_to post.titulo, post %></h2>
-      <% unless post.publicado %>
-        <span class="no-publicado">No publicado</span>
-      <% end %>
-      <div class="contenido-post">
-        <%= raw post.contenido.split('<!-- leer_mas -->').first %>
-        <% if post.contenido.include? '<!-- leer_mas -->' %>
-          <%= link_to "Leer más", post %>
-        <% end %>
-      </div>
-      <% if identificado? && usuario_actual.admin %>
-        <div class="acciones">
-          <%= link_to "Editar", edit_post_path(post) %>
-          | <%= link_to "Eliminar", post_path(post), method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'posts/item_lista', post: post %>
   <% end %>
 </div>
 <%= will_paginate %>

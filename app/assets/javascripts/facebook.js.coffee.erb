@@ -2,10 +2,18 @@ jQuery ->
   $('body').prepend('<div id="fb-root"></div>')
 
   $.ajax
-    url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
+    url: "#{window.location.protocol}//connect.facebook.net/es_LA/all.js"
     dataType: 'script'
     cache: true
 
+  ((d, s, id) ->
+    fjs = d.getElementsByTagName(s)[0]
+    return  if d.getElementById(id)
+    js = d.createElement(s)
+    js.id = id
+    js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=<%= FACEBOOK_CONFIG['app_id'] %>"
+    fjs.parentNode.insertBefore js, fjs
+  ) document, "script", "facebook-jssdk"
 
 window.fbAsyncInit = ->
   FB.init(appId: '<%= FACEBOOK_CONFIG["app_id"] %>', cookie: true)

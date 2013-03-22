@@ -1,2 +1,21 @@
-<h1>Bienvenido a la nueva Chiquitienda</h1>
-<p>Pendiente editar este archivo</p>
+<div class="row">
+  <div class="hero-unit">
+    <h1>Bienvenido a la nueva Chiquitienda</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="span6 productos">
+    <div class="row">
+    <% @productos.each do |producto| %>
+      <%= render 'productos/item_lista', producto: producto %>
+    <% end %>
+    </div>
+    <h4 class="ver-mas"><%= link_to :"Ver más productos", productos_path %></h4>
+  </div>
+  <div class="span6 posts">
+    <% @posts.each do |post| %>
+      <%= render 'posts/item_lista', post: post %>
+    <% end %>
+    <h4 class="ver-mas"><%= link_to :"Ver más posts", posts_path %></h4>
+  </div>
+</div>

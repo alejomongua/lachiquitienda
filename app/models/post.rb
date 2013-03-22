@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   attr_accessible :titulo, :contenido, :publicado, :autor, :tag_list
 
+  scope :publicados, where(publicado: true).order('created_at desc')
+
   acts_as_taggable
   belongs_to :autor, class_name: "Usuario"
 

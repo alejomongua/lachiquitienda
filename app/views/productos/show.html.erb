@@ -39,6 +39,16 @@
           <% end %>
         <% end %>
       </div>
+      <div class="social-producto">
+        <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false" ></div></div>
+        <div class="tweet-this">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-via="lachiquitienda" data-lang="es" data-size="large" data-related="lachiquitienda">Twittear</a>
+        </div>
+        <div class="google-plus-one"><div class="g-plusone"></div></div>
+        <div class="pinterest">
+          <a data-pin-config="beside" href="//pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
+        </div>
+      </div>
       <div class="precio-producto">
         <% if @producto.descuento && (@producto.descuento != 0) %>
           <div class="precio-antes">
@@ -50,16 +60,11 @@
           </div>
           <div class="precio">ahora solo <%= raw precio(@producto.precio - @producto.descuento) %></div>
         <% else %>
-          <div class="precio"><%= raw precio producto.precio %></div>
+          <div class="precio"><%= raw precio @producto.precio %></div>
         <% end %>
       </div>
       <div class="carrito">
         <a class="btn btn-primary btn-large" href="#"><i class="icon-shopping-cart icon-white"></i> Añadir al carrito</a>
-      </div>
-      <div class="social">
-        <div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-send="true" data-layout="box_count" data-width="100" data-show-faces="false" fb-xfbml-state="rendered"></div>
-        <div class="tweet-this"></div>
-        <div class="google-plus-one"></div>
       </div>
     </div>
   </div>
