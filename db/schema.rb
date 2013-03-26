@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313200933) do
+ActiveRecord::Schema.define(:version => 20130326132433) do
 
   create_table "campos_productos", :force => true do |t|
     t.string   "nombre"
@@ -47,6 +47,22 @@ ActiveRecord::Schema.define(:version => 20130313200933) do
 
   add_index "fotos", ["producto_id"], :name => "index_fotos_on_producto_id"
 
+  create_table "items", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "producto_id"
+    t.integer  "pedido_id"
+    t.integer  "cantidad"
+    t.integer  "precio"
+    t.string   "guest_token"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "items", ["guest_token"], :name => "index_items_on_guest_token"
+  add_index "items", ["pedido_id"], :name => "index_items_on_pedido_id"
+  add_index "items", ["producto_id"], :name => "index_items_on_producto_id"
+  add_index "items", ["usuario_id"], :name => "index_items_on_usuario_id"
+
   create_table "oauths", :force => true do |t|
     t.string   "uid"
     t.integer  "usuario_id"
@@ -66,6 +82,22 @@ ActiveRecord::Schema.define(:version => 20130313200933) do
   end
 
   add_index "opciones", ["campo_producto_id"], :name => "index_opciones_on_campo_producto_id"
+
+  create_table "pedidos", :force => true do |t|
+    t.string   "guia"
+    t.integer  "costo_envio"
+    t.string   "tipo_envio"
+    t.string   "direccion_envio"
+    t.string   "ciudad_envio"
+    t.string   "destinatario"
+    t.string   "tipo_pago"
+    t.string   "estado"
+    t.integer  "usuario_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "pedidos", ["usuario_id"], :name => "index_pedidos_on_usuario_id"
 
   create_table "posts", :force => true do |t|
     t.string   "titulo"
@@ -90,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20130313200933) do
     t.integer  "cantidad"
     t.boolean  "publicado"
     t.integer  "descuento"
+    t.boolean  "destacado"
   end
 
   add_index "productos", ["categoria_id"], :name => "index_productos_on_categoria_id"

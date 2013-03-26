@@ -64,7 +64,7 @@
         <% end %>
       </div>
       <div class="carrito">
-        <a class="btn btn-primary btn-large" href="#"><i class="icon-shopping-cart icon-white"></i> Añadir al carrito</a>
+        <%= link_to "#{content_tag :i, class: 'icon-shopping-cart icon-white'} Añadir al carrito", new_item_path(producto: @producto.id), remote: true %>
       </div>
     </div>
   </div>

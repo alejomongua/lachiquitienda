@@ -13,4 +13,7 @@
  *= require bootstrap-responsive
  *= require custom
  *= require colorbox
+ *= require jquery.pnotify.default.css
+ *= require jquery.pnotify.default.icons.css
+ *= require colorbox
  */

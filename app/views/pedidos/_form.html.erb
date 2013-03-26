@@ -1,0 +1,53 @@
+<%= form_for(@pedido) do |f| %>
+  <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+      <% @pedido.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :guia %><br />
+    <%= f.text_field :guia %>
+  </div>
+  <div class="field">
+    <%= f.label :costo_envio %><br />
+    <%= f.number_field :costo_envio %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_envio %><br />
+    <%= f.text_field :tipo_envio %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion_envio %><br />
+    <%= f.text_field :direccion_envio %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad_envio %><br />
+    <%= f.text_field :ciudad_envio %>
+  </div>
+  <div class="field">
+    <%= f.label :destinatario %><br />
+    <%= f.text_field :destinatario %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_pago %><br />
+    <%= f.text_field :tipo_pago %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br />
+    <%= f.text_field :estado %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario %><br />
+    <%= f.text_field :usuario %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

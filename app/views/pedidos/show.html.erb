@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Guia:</b>
+  <%= @pedido.guia %>
+</p>
+
+<p>
+  <b>Costo envio:</b>
+  <%= @pedido.costo_envio %>
+</p>
+
+<p>
+  <b>Tipo envio:</b>
+  <%= @pedido.tipo_envio %>
+</p>
+
+<p>
+  <b>Direccion envio:</b>
+  <%= @pedido.direccion_envio %>
+</p>
+
+<p>
+  <b>Ciudad envio:</b>
+  <%= @pedido.ciudad_envio %>
+</p>
+
+<p>
+  <b>Destinatario:</b>
+  <%= @pedido.destinatario %>
+</p>
+
+<p>
+  <b>Tipo pago:</b>
+  <%= @pedido.tipo_pago %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @pedido.estado %>
+</p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @pedido.usuario %>
+</p>
+
+
+<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%= link_to 'Back', pedidos_path %>
