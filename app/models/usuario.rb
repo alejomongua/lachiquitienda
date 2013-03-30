@@ -3,8 +3,8 @@ class Usuario < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # Accesibilidad
-  attr_accessible :email, :nombre, :password, :password_confirmation,
-                  :admin, :nick, :acerca_de_mi, :genero
+  attr_accessible :email, :nombre, :password, :password_confirmation, :telefono
+                  :admin, :nick, :acerca_de_mi, :genero, :direccion, :ciudad
                   
   has_secure_password
 
@@ -24,6 +24,8 @@ class Usuario < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :create
 
   has_many :oauths
+  has_many :items
+  has_many :pedidos
 
   def self.busqueda(s)
     if s

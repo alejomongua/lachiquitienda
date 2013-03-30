@@ -1,4 +1,7 @@
 Login::Application.routes.draw do
+  resources :items, ecxept: [:show, :edit]
+  resources :pedidos, ecxept: [:destroy]
+
   resources :productos do
     resources :fotos
   end    

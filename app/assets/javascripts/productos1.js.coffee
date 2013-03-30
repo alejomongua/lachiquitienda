@@ -36,3 +36,29 @@ jQuery ->
 
   # colorbox
   $(".foto").colorbox({rel:'foto'});
+
+  $('.add-to-cart').bind 'ajax:success', (event, data, status, xhr) ->
+    $.colorbox({
+      html: data
+      onComplete: ->
+        $('#new_item').bind 'ajax:success', (event, data, status, xhr) ->
+          $.pnotify({
+            text: "Item agregado al carrito",
+            type: "success",
+            delay: 3500
+          })
+        $('#new_item').bind 'ajax:before', ->
+          $.fn.colorbox.close()
+          $.pnotify({
+            text: "Agregando al carrito...",
+            delay: 1000
+          })
+        $('#new_item').bind 'ajax:failure', (event, data, status, xhr) ->
+          $.pnotify({
+            text: "Error agregado al carrito",
+            type: "error",
+            delay: 3500
+          })
+    })
+    
+  

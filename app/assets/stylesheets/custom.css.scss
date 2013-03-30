@@ -212,3 +212,13 @@ a.add_fields{
   }
 }
 h4.ver-mas{text-align:center;}
+
+table.carrito {
+  td{
+    padding: 1em;
+  }
+  td.cantidad input{
+    width: 3em;
+    margin-bottom:0;
+  }
+}

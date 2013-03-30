@@ -8,6 +8,10 @@ module SesionesHelper
       cookies[:remember_token] = usuario.remember_token
     end
     self.usuario_actual = usuario
+    if session[:guest_token]
+      Item.where(guest_token: session[:guest_token]).update_all(usuario_id: usuario.id, guest_token: '')
+      session.delete(:guest_token)
+    end
   end
 
   def identificado?
@@ -17,6 +21,7 @@ module SesionesHelper
   def salir
     self.usuario_actual = nil
     cookies.delete(:remember_token)
+    reset_session
   end
 
   def usuario_actual=(usuario)
