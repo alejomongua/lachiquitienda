@@ -11,7 +11,7 @@
         <div class="tachado"></div>
       </span>
     </div>
-    <div class="precio">ahora solo <%= raw precio(producto.precio - producto.descuento) %></div>
+    <div class="precio">Ahora solo <%= raw precio(producto.precio - producto.descuento) %></div>
   <% else %>
     <div class="precio"><%= raw precio producto.precio %></div>
   <% end %>

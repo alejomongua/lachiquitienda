@@ -1,9 +1,10 @@
 class Producto < ActiveRecord::Base
   attr_accessible :descripcion, :nombre, :precio, :propiedades, 
                   :cantidad, :publicado, :etiqueta_list, :categoria_id,
-                  :descuento, :fotos_attributes
+                  :descuento, :fotos_attributes, :destacado
 
   scope :publicados, where(publicado: true)
+  scope :destacados, where(destacado: true)
 
   belongs_to :categoria
   acts_as_taggable_on :etiquetas

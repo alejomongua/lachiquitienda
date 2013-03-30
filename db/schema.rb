@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313200933) do
+ActiveRecord::Schema.define(:version => 20130322164216) do
 
   create_table "campos_productos", :force => true do |t|
     t.string   "nombre"
@@ -90,9 +90,13 @@ ActiveRecord::Schema.define(:version => 20130313200933) do
     t.integer  "cantidad"
     t.boolean  "publicado"
     t.integer  "descuento"
+    t.boolean  "destacado"
   end
 
   add_index "productos", ["categoria_id"], :name => "index_productos_on_categoria_id"
+  add_index "productos", ["created_at"], :name => "index_productos_on_created_at"
+  add_index "productos", ["destacado"], :name => "index_productos_on_destacado"
+  add_index "productos", ["publicado"], :name => "index_productos_on_publicado"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

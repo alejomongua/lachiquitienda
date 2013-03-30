@@ -23,6 +23,11 @@
       | <%= link_to "Eliminar", post_path(@post), method: :delete, prompt: "Este cambio no se puede deshacer. ¿Desea continuar?" %>
     </div>
   <% end %>
+  <div class="row">
+    <div class="span12">
+      <h4>¿Te sirvió? Le puede servir a alguien que conozcas. Por favor no olvides compartir</h4>
+    </div>
+  </div>
   <div class="social-post row">
     <div class="facebook span3">
       <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false" data-action="recommend"></div></div>

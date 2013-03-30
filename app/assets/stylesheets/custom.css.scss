@@ -1,7 +1,7 @@
 $break-large: 979px;
 $break-middle: 767px;
 body{
-  background: url('/images/backgrounds/bg7.jpg');
+  background: url('/images/backgrounds/bg9.jpg');
 }
 footer{
   font-size:0.9em;
@@ -161,7 +161,7 @@ a.add_fields{
   text-align:center;
 }
 .top{
-  background: url('/images/backgrounds/bg6.jpg');
+  background: url('/images/backgrounds/bg8.jpg');
   background-repeat:repeat;
   padding:5em 0 1em 0;
   @media screen and (max-width: $break-large) {
@@ -169,7 +169,7 @@ a.add_fields{
   }
 }
 .bottom{
-  background: url('/images/backgrounds/bg7.jpg');
+  background: url('/images/backgrounds/bg9.jpg');
   color:#DDF;
   padding-top:1em;
   ul li{
@@ -180,10 +180,11 @@ a.add_fields{
     }
   }
 }
-.middle{
-  background-color:gray;
-  width:110%;
-  height: 3em;
+.middle {
+  background-image: url('/images/backgrounds/ninos2.jpg');
+  width: 110%;
+  height: 60px;
+  padding:0px
 }
 .info-post{
   font-size:0.9em;
@@ -191,16 +192,23 @@ a.add_fields{
 }
 
 @media screen and (max-width: $break-middle) {
-  .top, .bottom, .middle{
+  .top, .bottom{
     margin-left: -20px;
     margin-right: -20px;
     padding:1em;
+  }
+  .middle{
+    margin-left: -20px;
+    margin-right: -20px;
   }
   .social-post div{
     padding-top:1em;
     margin:0 auto;
     display: block;
     width: 100px;
+  }
+  .hero-unit h1{
+    font-size:40px
   }
 }
 h4.ver-mas{text-align:center;}
