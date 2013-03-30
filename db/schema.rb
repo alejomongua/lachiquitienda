@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130322164216) do
-=======
-ActiveRecord::Schema.define(:version => 20130326132433) do
->>>>>>> origin/master
+ActiveRecord::Schema.define(:version => 20130326213028) do
 
   create_table "campos_productos", :force => true do |t|
     t.string   "nombre"
@@ -94,11 +90,14 @@ ActiveRecord::Schema.define(:version => 20130326132433) do
     t.string   "direccion_envio"
     t.string   "ciudad_envio"
     t.string   "destinatario"
+    t.string   "telefono",            :limit => 20
+    t.string   "numero_consignacion"
+    t.date     "fecha_consignacion"
     t.string   "tipo_pago"
     t.string   "estado"
     t.integer  "usuario_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   add_index "pedidos", ["usuario_id"], :name => "index_pedidos_on_usuario_id"
@@ -162,8 +161,11 @@ ActiveRecord::Schema.define(:version => 20130326132433) do
     t.string   "token"
     t.date     "fecha_token"
     t.boolean  "admin"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "direccion"
+    t.string   "ciudad"
+    t.string   "telefono",        :limit => 20
   end
 
 end
